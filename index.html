@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Empresa Constructora</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --highlight: #d4af37;
+      --card: #f9fafb;
+      --border: #e5e7eb;
+    }
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); }
+
+    /* Navbar */
+    .navbar {
+      position: fixed; top:0; left:0; width:100%;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:1rem 2rem;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
+      border-bottom:1px solid var(--border);
+      z-index:1000;
+    }
+    .logo img { height:45px; }
+    .nav-links { list-style:none; display:flex; gap:1.5rem; }
+    .nav-links a { text-decoration:none; color:var(--text); font-weight:600; }
+    .nav-links a:hover { color:var(--accent); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+    .hamburger span { width:25px; height:3px; background:var(--text); border-radius:2px; }
+    @media(max-width:768px){
+      .nav-links { 
+        position:fixed; top:0; right:-220px; height:100%; width:200px;
+        background:#fff; flex-direction:column; padding:2rem; gap:1rem;
+        transition:right .3s ease; 
+      }
+      .nav-links.show { right:0; }
+      .hamburger { display:flex; }
+    }
+
+    /* Header + Slider */
+    header { position:relative; height:70vh; margin-top:60px; overflow:hidden; }
+    .slider { position:absolute; inset:0; }
+    .slide { position:absolute; inset:0; opacity:0; transition:opacity 2s ease-in-out;
+      background-size:cover; background-position:center; }
+    .slide.active { opacity:1; }
+    .slider-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.5)); }
+    .hero-content { position:absolute; inset:0; display:grid; place-items:center; text-align:center; color:#fff; }
+    .hero-content h1 { font-size:clamp(2rem,4vw,3.5rem); font-weight:700; color:var(--highlight); }
+    .hero-content p { max-width:60ch; margin:1rem auto; }
+    .cta-row { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+    .btn { padding:.8rem 1.2rem; border-radius:.6rem; background:linear-gradient(135deg,var(--accent),var(--highlight));
+      color:#fff; text-decoration:none; font-weight:600; transition:.3s; }
+    .btn:hover { transform:translateY(-3px); box-shadow:0 4px 12px rgba(0,0,0,.3); }
+
+    main { max-width:1100px; margin:0 auto; padding:2rem 1rem; }
+    section { margin:3rem 0; }
+    section h2 { font-size:2rem; color:var(--accent); border-bottom:2px solid var(--accent); margin-bottom:1rem; }
+    section p.lead { color:var(--muted); max-width:70ch; }
+
+    /* Servicios */
+    .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1rem; }
+    .service-card { background:var(--card); border:1px solid var(--border); border-radius:.8rem; padding:1rem; transition:.3s; }
+    .service-card:hover { transform:translateY(-5px); box-shadow:0 6px 16px rgba(0,0,0,.1); }
+    .service-title { font-weight:600; color:var(--accent); margin:.5rem 0; }
+    .service-desc { color:var(--muted); }
+
+    /* Galería */
+    .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:.75rem; }
+    .gallery-item { position:relative; overflow:hidden; border-radius:.6rem; border:1px solid var(--border); }
+    .gallery-item img { width:100%; height:100%; object-fit:cover; transition:.6s; }
+    .gallery-item:hover img { transform:scale(1.08); }
+    .badge { position:absolute; top:.5rem; left:.5rem; background:var(--accent); color:#fff; padding:.25rem .5rem; border-radius:.4rem; font-size:.8rem; }
+
+    footer { border-top:1px solid var(--border); padding:1.5rem; text-align:center; color:var(--muted); }
+      /* Overlay más oscuro */
+.slider-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.75));
+}
+
+
+
+/* Sombra en el texto */
+.hero-content h1,
+.hero-content p {
+  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="https://dummyimage.com/120x45/2563eb/ffffff&text=LOGO" alt="Logo Empresa">
+    </div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#quienes-somos">Quiénes somos</a></li>
+      <li><a href="#galeria">Proyectos</a></li>
+       <li><a href ="">Servicios</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+     
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Header con slider -->
+<!-- Header con slider -->
+<header id="inicio">
+  <div class="slider" id="slider">
+    <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1600&auto=format&fit=crop');"></div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=1600&auto=format&fit=crop');"></div>
+    <div class="slide" style="background-image:url('https://tse4.mm.bing.net/th/id/OIP.PN7u8EuqfvUUqIvrZzIHawHaEK?rs=1&pid=ImgDetMain&o=7&rm=3');"></div>
+  </div>
+
+  <!-- Overlay más oscuro -->
+  <div class="slider-overlay"></div>
+
+  <!-- Contenido destacado -->
+  <div class="hero-content">
+    <div class="hero-box">
+      <h1>Diseño y construcción con excelencia</h1>
+      <p>Proyectos habitacionales y comerciales con enfoque en calidad, estética y cumplimiento.</p>
+      <div class="cta-row" id="contacto">
+        <a class="btn" href="https://wa.me/56912345678" target="_blank">WhatsApp</a>
+        <a class="btn" href="https://facebook.com/tuempresa" target="_blank">Facebook</a>
+        <a class="btn" href="https://instagram.com/tuempresa" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+  <main>
+    <section id="quienes-somos">
+      <h2>Quiénes somos</h2>
+      <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci consectetur natus dolor, eius nesciunt molestias ex? Aperiam nihil, quis excepturi modi, rerum, quasi beatae iusto nulla incidunt perferendis amet error..</p>
+    </section>
+
+    <section id="galeria">
+      <h2>Galería de proyectos</h2>
+      <p class="lead">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum sit quos impedit esse minima a recusandae quibusdam consequatur aperiam quam ipsa voluptate numquam, explicabo vero quo. Laboriosam fuga necessitatibus quo..
+      </p>
+
+      <div class="gallery">
+        <!-- Ejecutados -->
+        <figure class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200&auto=format&fit=crop" alt="Casa moderna ejecutada 1">
+          <figcaption class="badge">Ejecutado</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1200&auto=format&fit=crop" alt="Casa moderna ejecutada 2">
+          <figcaption class="badge">Ejecutado</figcaption>
+        </figure>
+
+        <!-- Vigentes -->
+        <figure class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1200&auto=format&fit=crop" alt="Proyecto vigente 1">
+          <figcaption class="badge">Vigente</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=1200&auto=format&fit=crop" alt="Proyecto vigente 2">
+          <figcaption class="badge">Vigente</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+<footer>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; text-align:left; max-width:1100px; margin:0 auto;">
+    
+    <!-- Información de contacto -->
+    <div>
+      <h3 style="color:var(--accent); margin-bottom:.5rem;">Contacto</h3>
+      <p>📍 Av. Principal 1234, San Fernando, Chile</p>
+      <p>📞 +56 9 1234 5678</p>
+      <p>✉️ contacto@tuempresa.cl</p>
+    </div>
+
+    <!-- Redes sociales -->
+    <div>
+      <h3 style="color:var(--accent); margin-bottom:.5rem;">Síguenos</h3>
+      <p>
+        <a href="https://facebook.com/tuempresa" target="_blank">Facebook</a><br>
+        <a href="https://instagram.com/tuempresa" target="_blank">Instagram</a><br>
+        <a href="https://wa.me/56912345678" target="_blank">WhatsApp</a>
+      </p>
+    </div>
+
+    <!-- Mapa -->
+    <div>
+      <h3 style="color:var(--accent); margin-bottom:.5rem;">Ubicación</h3>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!..." 
+        width="100%" height="180" style="border:0; border-radius:.6rem;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Derechos reservados + Powered by -->
+  <p style="text-align:center; margin-top:1.5rem; color:var(--muted);">
+    © 2026 Tu Empresa — Todos los derechos reservados<br>
+    <span style="color:var(--accent); font-weight:600;">Powered by Jg Freelance</span>
+  </p>
+</footer>
+
+
+  <script>
+    // Slider con fade automático cada 5 segundos
+    (function() {
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      let index = 0;
+      const interval = 5000; // cada 5 segundos
+
+      function show(i) {
+        slides.forEach((s, idx) => {
+          s.classList.toggle('active', idx === i);
+        });
+      }
+
+      function next() {
+        index = (index + 1) % slides.length;
+        show(index);
+      }
+
+      show(index);
+      setInterval(next, interval);
+    })();
+
+    // Menú responsive (hamburguesa)
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>
