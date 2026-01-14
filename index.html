@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Empresa Constructora</title>
+  <!-- Font Awesome para íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     :root {
       --bg: #ffffff;
@@ -16,6 +19,23 @@
     }
     * { box-sizing: border-box; margin:0; padding:0; }
     body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); }
+
+    /* Preloader */
+    #preloader {
+      position: fixed; inset:0;
+      background: var(--bg);
+      display:flex; justify-content:center; align-items:center;
+      z-index:2000;
+      transition: opacity .4s ease;
+    }
+    .loader {
+      border:6px solid var(--border);
+      border-top:6px solid var(--accent);
+      border-radius:50%;
+      width:50px; height:50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
 
     /* Navbar */
     .navbar {
@@ -36,7 +56,7 @@
     @media(max-width:768px){
       .nav-links { 
         position:fixed; top:0; right:-240px; height:100%; width:240px;
-        background:#ffffff; /* fondo sólido */
+        background:#ffffff;
         flex-direction:column; padding:2rem; gap:1rem;
         transition:right .3s ease; 
         box-shadow: -2px 0 8px rgba(0,0,0,0.15);
@@ -46,7 +66,36 @@
       .hamburger { display:flex; }
     }
 
-    /* Header + Slider */
+    /* Panel de redes */
+    .social-panel {
+      position: fixed;
+      top: 60px; right: 0;
+      background: #fff;
+      border-left: 1px solid var(--border);
+      box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+      padding: 1rem;
+      width: 220px;
+      transform: translateX(100%);
+      transition: transform .3s ease;
+      z-index: 999;
+    }
+    .social-panel.show { transform: translateX(0); }
+    .social-links { display:flex; flex-direction:column; gap:1rem; }
+    .social-links a { display:flex; align-items:center; gap:.5rem; color:var(--text); font-weight:600; text-decoration:none; }
+    .social-links a:hover i { color:var(--highlight); }
+    .close-btn { background:none; border:none; font-size:1.2rem; cursor:pointer; color:var(--text); margin-bottom:1rem; }
+
+    /* Botón flotante WhatsApp */
+    .whatsapp-float {
+      position: fixed; bottom: 20px; right: 20px;
+      background: #25d366; color: #fff;
+      font-size: 1.8rem; padding:.8rem;
+      border-radius: 50%; box-shadow:0 4px 12px rgba(0,0,0,.3);
+      z-index:1000; transition: transform .3s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    /* Hero + Slider */
     header { position:relative; height:70vh; margin-top:60px; overflow:hidden; }
     .slider { position:absolute; inset:0; }
     .slide { position:absolute; inset:0; opacity:0; transition:opacity 2s ease-in-out;
@@ -54,14 +103,22 @@
     .slide.active { opacity:1; }
     .slider-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0.55),rgba(0,0,0,0.75)); }
     .hero-content { position:absolute; inset:0; display:grid; place-items:center; text-align:center; color:#fff; }
-    .hero-box { background: rgba(0,0,0,0.45); padding: 1.5rem 2rem; border-radius:.8rem; display:inline-block; }
-    .hero-content h1 { font-size:clamp(2rem,4vw,3.5rem); font-weight:700; color:var(--highlight); text-shadow:0 2px 6px rgba(0,0,0,0.7); }
-    .hero-content p { max-width:60ch; margin:1rem auto; text-shadow:0 2px 6px rgba(0,0,0,0.7); }
-    .cta-row { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+   
+    .hero-content h1 { font-size:clamp(2rem,4vw,3.5rem); font-weight:700; color:var(--highlight); opacity:0; }
+    .hero-content p { max-width:60ch; margin:1rem auto; opacity:0; }
+    .cta-row { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; opacity:0; }
     .btn { padding:.8rem 1.2rem; border-radius:.6rem; background:linear-gradient(135deg,var(--accent),var(--highlight));
       color:#fff; text-decoration:none; font-weight:600; transition:.3s; }
     .btn:hover { transform:translateY(-3px); box-shadow:0 4px 12px rgba(0,0,0,.3); }
 
+    /* Animaciones */
+    @keyframes fadeUp { from{opacity:0; transform:translateY(30px);} to{opacity:1; transform:translateY(0);} }
+    @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+    .animate h1 { animation: fadeUp 1s ease forwards; }
+    .animate p { animation: fadeUp 1.2s ease forwards; }
+    .animate .cta-row { animation: fadeIn 1.5s ease forwards; }
+
+    /* Secciones generales */
     main { max-width:1100px; margin:0 auto; padding:2rem 1rem; }
     section { margin:3rem 0; }
     section h2 { font-size:2rem; color:var(--accent); border-bottom:2px solid var(--accent); margin-bottom:1rem; }
@@ -89,9 +146,29 @@
     .footer-grid a:hover { color:var(--accent); }
     .footer-bottom { text-align:center; margin-top:1.5rem; color:var(--muted); }
     .footer-bottom span { color:var(--accent); font-weight:600; }
+    .close-mobile {
+  display: none;
+  text-align: right;
+}
+
+.close-mobile button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+@media(max-width:768px){
+  .close-mobile { display: block; }
+}
+
   </style>
 </head>
 <body>
+
+  <!-- Preloader -->
+  <div id="preloader"><div class="loader"></div></div>
 
   <!-- Navbar -->
   <nav class="navbar">
@@ -99,19 +176,33 @@
       <img src="https://dummyimage.com/120x45/2563eb/ffffff&text=LOGO" alt="Logo Empresa">
     </div>
     <ul class="nav-links">
+      <li class="close-mobile"><button id="closeMenu"><i class="fas fa-times"></i></button></li>
+
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#quienes-somos">Quiénes somos</a></li>
       <li><a href="#galeria">Proyectos</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <div class="hamburger" id="hamburger">
-      <span></span><span></span><span></span>
-    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </nav>
 
+  <!-- Panel de redes sociales -->
+  <div class="social-panel" id="socialPanel">
+    <button class="close-btn" id="closeSocial"><i class="fas fa-times"></i></button>
+    <div class="social-links">
+      <a href="https://facebook.com/tuempresa" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+      <a href="https://instagram.com/tuempresa" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="https://wa.me/56912345678" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Botón flotante WhatsApp -->
+  <a href="https://wa.me/56912345678" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
   <!-- Header con slider -->
-    <!-- Header con slider -->
   <header id="inicio">
     <div class="slider" id="slider">
       <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1600&auto=format&fit=crop');"></div>
@@ -123,11 +214,7 @@
       <div class="hero-box">
         <h1>Diseño y construcción con excelencia</h1>
         <p>Proyectos habitacionales y comerciales con enfoque en calidad, estética y cumplimiento.</p>
-        <div class="cta-row" id="contacto">
-          <a class="btn" href="https://wa.me/56912345678" target="_blank">WhatsApp</a>
-          <a class="btn" href="https://facebook.com/tuempresa" target="_blank">Facebook</a>
-          <a class="btn" href="https://instagram.com/tuempresa" target="_blank">Instagram</a>
-        </div>
+        
       </div>
     </div>
   </header>
@@ -194,7 +281,7 @@
       <!-- Información de contacto -->
       <div>
         <h3>Contacto</h3>
-        <p>📍 Av. Principal 1234, San Fernando, Chile</p>
+        <p>📍 San Fernando, Chile</p>
         <p>📞 +56 9 1234 5678</p>
         <p>✉️ contacto@tuempresa.cl</p>
       </div>
@@ -203,9 +290,9 @@
       <div>
         <h3>Síguenos</h3>
         <p>
-          <a href="https://facebook.com/tuempresa" target="_blank">Facebook</a><br>
-          <a href="https://instagram.com/tuempresa" target="_blank">Instagram</a><br>
-          <a href="https://wa.me/56912345678" target="_blank">WhatsApp</a>
+          <a href="https://facebook.com/tuempresa" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a><br>
+          <a href="https://instagram.com/tuempresa" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><br>
+          <a href="https://wa.me/56912345678" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
         </p>
       </div>
 
@@ -213,7 +300,7 @@
       <div>
         <h3>Ubicación</h3>
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!..." 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.123456789!2d-70.999!3d-34.583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1sSan%20Fernando%2C%20Chile!5e0!3m2!1ses!2scl!4v1234567890" 
           width="100%" height="180" style="border:0; border-radius:.6rem;" allowfullscreen="" loading="lazy">
         </iframe>
       </div>
@@ -226,34 +313,53 @@
   </footer>
 
   <script>
-    // Slider con fade automático cada 5 segundos
+    // Preloader
+    window.addEventListener("load", () => {
+      const preloader = document.getElementById("preloader");
+      preloader.style.opacity = "0";
+      setTimeout(() => preloader.style.display = "none", 500);
+
+      // Animación hero al cargar
+      document.querySelector(".hero-box").classList.add("animate");
+    });
+
+    // Slider automático
     (function() {
       const slides = Array.from(document.querySelectorAll('.slide'));
       let index = 0;
-      const interval = 5000; // cada 5 segundos
-
-      function show(i) {
-        slides.forEach((s, idx) => {
-          s.classList.toggle('active', idx === i);
-        });
-      }
-
-      function next() {
-        index = (index + 1) % slides.length;
-        show(index);
-      }
-
+      const interval = 5000;
+      function show(i) { slides.forEach((s, idx) => s.classList.toggle('active', idx === i)); }
+      function next() { index = (index + 1) % slides.length; show(index); }
       show(index);
       setInterval(next, interval);
     })();
 
-    // Menú responsive (hamburguesa)
+    // Menú responsive
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
+    // Panel de redes sociales
+    const socialPanel = document.getElementById('socialPanel');
+    const closeSocial = document.getElementById('closeSocial');
+    const contactLink = document.querySelector('a[href="#contacto"]');
+
+    if (contactLink) {
+      contactLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        socialPanel.classList.add('show');
+      });
+    }
+    closeSocial.addEventListener('click', () => {
+      socialPanel.classList.remove('show');
     });
   </script>
+  <script>
+  const closeMenu = document.getElementById('closeMenu');
+  closeMenu.addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.remove('show');
+  });
+</script>
+
 </body>
 </html>
