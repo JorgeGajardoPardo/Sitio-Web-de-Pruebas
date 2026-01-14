@@ -29,17 +29,20 @@
     }
     .logo img { height:45px; }
     .nav-links { list-style:none; display:flex; gap:1.5rem; }
-    .nav-links a { text-decoration:none; color:var(--text); font-weight:600; }
+    .nav-links a { text-decoration:none; color:var(--text); font-weight:600; transition:.3s; }
     .nav-links a:hover { color:var(--accent); }
     .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
     .hamburger span { width:25px; height:3px; background:var(--text); border-radius:2px; }
     @media(max-width:768px){
       .nav-links { 
-        position:fixed; top:0; right:-220px; height:100%; width:200px;
-        background:#fff; flex-direction:column; padding:2rem; gap:1rem;
+        position:fixed; top:0; right:-240px; height:100%; width:240px;
+        background:#ffffff; /* fondo sólido */
+        flex-direction:column; padding:2rem; gap:1rem;
         transition:right .3s ease; 
+        box-shadow: -2px 0 8px rgba(0,0,0,0.15);
       }
       .nav-links.show { right:0; }
+      .nav-links a { color: var(--text); font-size:1.1rem; }
       .hamburger { display:flex; }
     }
 
@@ -49,10 +52,11 @@
     .slide { position:absolute; inset:0; opacity:0; transition:opacity 2s ease-in-out;
       background-size:cover; background-position:center; }
     .slide.active { opacity:1; }
-    .slider-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.5)); }
+    .slider-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0.55),rgba(0,0,0,0.75)); }
     .hero-content { position:absolute; inset:0; display:grid; place-items:center; text-align:center; color:#fff; }
-    .hero-content h1 { font-size:clamp(2rem,4vw,3.5rem); font-weight:700; color:var(--highlight); }
-    .hero-content p { max-width:60ch; margin:1rem auto; }
+    .hero-box { background: rgba(0,0,0,0.45); padding: 1.5rem 2rem; border-radius:.8rem; display:inline-block; }
+    .hero-content h1 { font-size:clamp(2rem,4vw,3.5rem); font-weight:700; color:var(--highlight); text-shadow:0 2px 6px rgba(0,0,0,0.7); }
+    .hero-content p { max-width:60ch; margin:1rem auto; text-shadow:0 2px 6px rgba(0,0,0,0.7); }
     .cta-row { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
     .btn { padding:.8rem 1.2rem; border-radius:.6rem; background:linear-gradient(135deg,var(--accent),var(--highlight));
       color:#fff; text-decoration:none; font-weight:600; transition:.3s; }
@@ -77,22 +81,14 @@
     .gallery-item:hover img { transform:scale(1.08); }
     .badge { position:absolute; top:.5rem; left:.5rem; background:var(--accent); color:#fff; padding:.25rem .5rem; border-radius:.4rem; font-size:.8rem; }
 
-    footer { border-top:1px solid var(--border); padding:1.5rem; text-align:center; color:var(--muted); }
-      /* Overlay más oscuro */
-.slider-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.75));
-}
-
-
-
-/* Sombra en el texto */
-.hero-content h1,
-.hero-content p {
-  text-shadow: 0 2px 6px rgba(0,0,0,0.7);
-}
-
+    /* Footer */
+    footer { border-top:1px solid var(--border); padding:2rem 1rem; background:#f9fafb; }
+    .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; max-width:1100px; margin:0 auto; }
+    .footer-grid h3 { color:var(--accent); margin-bottom:.5rem; }
+    .footer-grid p, .footer-grid a { color:var(--text); text-decoration:none; }
+    .footer-grid a:hover { color:var(--accent); }
+    .footer-bottom { text-align:center; margin-top:1.5rem; color:var(--muted); }
+    .footer-bottom span { color:var(--accent); font-weight:600; }
   </style>
 </head>
 <body>
@@ -106,9 +102,8 @@
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#quienes-somos">Quiénes somos</a></li>
       <li><a href="#galeria">Proyectos</a></li>
-       <li><a href ="">Servicios</a></li>
+      <li><a href="#servicios">Servicios</a></li>
       <li><a href="#contacto">Contacto</a></li>
-     
     </ul>
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
@@ -116,42 +111,58 @@
   </nav>
 
   <!-- Header con slider -->
-<!-- Header con slider -->
-<header id="inicio">
-  <div class="slider" id="slider">
-    <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1600&auto=format&fit=crop');"></div>
-    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=1600&auto=format&fit=crop');"></div>
-    <div class="slide" style="background-image:url('https://tse4.mm.bing.net/th/id/OIP.PN7u8EuqfvUUqIvrZzIHawHaEK?rs=1&pid=ImgDetMain&o=7&rm=3');"></div>
-  </div>
-
-  <!-- Overlay más oscuro -->
-  <div class="slider-overlay"></div>
-
-  <!-- Contenido destacado -->
-  <div class="hero-content">
-    <div class="hero-box">
-      <h1>Diseño y construcción con excelencia</h1>
-      <p>Proyectos habitacionales y comerciales con enfoque en calidad, estética y cumplimiento.</p>
-      <div class="cta-row" id="contacto">
-        <a class="btn" href="https://wa.me/56912345678" target="_blank">WhatsApp</a>
-        <a class="btn" href="https://facebook.com/tuempresa" target="_blank">Facebook</a>
-        <a class="btn" href="https://instagram.com/tuempresa" target="_blank">Instagram</a>
+    <!-- Header con slider -->
+  <header id="inicio">
+    <div class="slider" id="slider">
+      <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1600&auto=format&fit=crop');"></div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=1600&auto=format&fit=crop');"></div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1502005229762-cf1b2da7c52f?q=80&w=1600&auto=format&fit=crop');"></div>
+    </div>
+    <div class="slider-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-box">
+        <h1>Diseño y construcción con excelencia</h1>
+        <p>Proyectos habitacionales y comerciales con enfoque en calidad, estética y cumplimiento.</p>
+        <div class="cta-row" id="contacto">
+          <a class="btn" href="https://wa.me/56912345678" target="_blank">WhatsApp</a>
+          <a class="btn" href="https://facebook.com/tuempresa" target="_blank">Facebook</a>
+          <a class="btn" href="https://instagram.com/tuempresa" target="_blank">Instagram</a>
+        </div>
       </div>
     </div>
-  </div>
-</header>
-
+  </header>
 
   <main>
     <section id="quienes-somos">
       <h2>Quiénes somos</h2>
-      <p class="lead">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci consectetur natus dolor, eius nesciunt molestias ex? Aperiam nihil, quis excepturi modi, rerum, quasi beatae iusto nulla incidunt perferendis amet error..</p>
+      <p class="lead">
+        Somos un equipo multidisciplinario dedicado a materializar proyectos con precisión y estética. 
+        Creemos en la comunicación clara, el cumplimiento y la mejora continua.
+      </p>
+    </section>
+
+    <section id="servicios">
+      <h2>Servicios</h2>
+      <div class="services">
+        <div class="service-card">
+          <h3 class="service-title">Diseño arquitectónico</h3>
+          <p class="service-desc">Proyectos habitacionales y comerciales con enfoque en estética y funcionalidad.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-title">Construcción</h3>
+          <p class="service-desc">Ejecución de obras con altos estándares de calidad y cumplimiento.</p>
+        </div>
+        <div class="service-card">
+          <h3 class="service-title">Remodelaciones</h3>
+          <p class="service-desc">Mejoramos y adaptamos espacios existentes para nuevas necesidades.</p>
+        </div>
+      </div>
     </section>
 
     <section id="galeria">
       <h2>Galería de proyectos</h2>
       <p class="lead">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum sit quos impedit esse minima a recusandae quibusdam consequatur aperiam quam ipsa voluptate numquam, explicabo vero quo. Laboriosam fuga necessitatibus quo..
+        Proyectos ejecutados y vigentes. Al iniciar un nuevo proyecto, lo incorporamos aquí para seguimiento visual.
       </p>
 
       <div class="gallery">
@@ -178,44 +189,41 @@
     </section>
   </main>
 
-<footer>
-  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; text-align:left; max-width:1100px; margin:0 auto;">
-    
-    <!-- Información de contacto -->
-    <div>
-      <h3 style="color:var(--accent); margin-bottom:.5rem;">Contacto</h3>
-      <p>📍 Av. Principal 1234, San Fernando, Chile</p>
-      <p>📞 +56 9 1234 5678</p>
-      <p>✉️ contacto@tuempresa.cl</p>
+  <footer>
+    <div class="footer-grid">
+      <!-- Información de contacto -->
+      <div>
+        <h3>Contacto</h3>
+        <p>📍 Av. Principal 1234, San Fernando, Chile</p>
+        <p>📞 +56 9 1234 5678</p>
+        <p>✉️ contacto@tuempresa.cl</p>
+      </div>
+
+      <!-- Redes sociales -->
+      <div>
+        <h3>Síguenos</h3>
+        <p>
+          <a href="https://facebook.com/tuempresa" target="_blank">Facebook</a><br>
+          <a href="https://instagram.com/tuempresa" target="_blank">Instagram</a><br>
+          <a href="https://wa.me/56912345678" target="_blank">WhatsApp</a>
+        </p>
+      </div>
+
+      <!-- Mapa -->
+      <div>
+        <h3>Ubicación</h3>
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!..." 
+          width="100%" height="180" style="border:0; border-radius:.6rem;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
     </div>
 
-    <!-- Redes sociales -->
-    <div>
-      <h3 style="color:var(--accent); margin-bottom:.5rem;">Síguenos</h3>
-      <p>
-        <a href="https://facebook.com/tuempresa" target="_blank">Facebook</a><br>
-        <a href="https://instagram.com/tuempresa" target="_blank">Instagram</a><br>
-        <a href="https://wa.me/56912345678" target="_blank">WhatsApp</a>
-      </p>
+    <div class="footer-bottom">
+      © 2026 Tu Empresa — Todos los derechos reservados<br>
+      <span>Hecho por Jg Freelance</span>
     </div>
-
-    <!-- Mapa -->
-    <div>
-      <h3 style="color:var(--accent); margin-bottom:.5rem;">Ubicación</h3>
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!..." 
-        width="100%" height="180" style="border:0; border-radius:.6rem;" allowfullscreen="" loading="lazy">
-      </iframe>
-    </div>
-  </div>
-
-  <!-- Derechos reservados + Powered by -->
-  <p style="text-align:center; margin-top:1.5rem; color:var(--muted);">
-    © 2026 Tu Empresa — Todos los derechos reservados<br>
-    <span style="color:var(--accent); font-weight:600;">Powered by Jg Freelance</span>
-  </p>
-</footer>
-
+  </footer>
 
   <script>
     // Slider con fade automático cada 5 segundos
