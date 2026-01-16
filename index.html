@@ -9,7 +9,7 @@
 
   <style>
     :root {
-      --bg: #ffffff;
+      --bg: #f4f4f4;
       --text: #1f2937;
       --muted: #6b7280;
       --accent: #2563eb;
@@ -17,6 +17,7 @@
       --card: #f9fafb;
       --border: #e5e7eb;
     }
+
     * { box-sizing: border-box; margin:0; padding:0; }
     body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); }
 
@@ -42,12 +43,12 @@
       position: fixed; top:0; left:0; width:100%;
       display:flex; justify-content:space-between; align-items:center;
       padding:1rem 2rem;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.99);
+      
       border-bottom:1px solid var(--border);
       z-index:1000;
     }
-    .logo img { height:45px; }
+    .logo img { height:50px; }
     .nav-links { list-style:none; display:flex; gap:1.5rem; }
     .nav-links a { text-decoration:none; color:var(--text); font-weight:600; transition:.3s; }
     .nav-links a:hover { color:var(--accent); }
@@ -56,13 +57,13 @@
     @media(max-width:768px){
       .nav-links { 
         position:fixed; top:0; right:-240px; height:100%; width:240px;
-        background:#ffffff;
+       background: linear-gradient(to bottom, #1e3b8a, #374151da);
         flex-direction:column; padding:2rem; gap:1rem;
         transition:right .3s ease; 
         box-shadow: -2px 0 8px rgba(0,0,0,0.15);
       }
       .nav-links.show { right:0; }
-      .nav-links a { color: var(--text); font-size:1.1rem; }
+      .nav-links a { color: var(--bg); font-size:1.1rem; }
       .hamburger { display:flex; }
     }
 
@@ -96,12 +97,12 @@
     .whatsapp-float:hover { transform: scale(1.1); }
 
     /* Hero + Slider */
-    header { position:relative; height:70vh; margin-top:60px; overflow:hidden; }
+    header { position:relative; height:90vh; margin-top:60px; overflow:hidden; }
     .slider { position:absolute; inset:0; }
     .slide { position:absolute; inset:0; opacity:0; transition:opacity 2s ease-in-out;
       background-size:cover; background-position:center; }
     .slide.active { opacity:1; }
-    .slider-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0.55),rgba(0,0,0,0.75)); }
+    .slider-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(0,0,0,0.55),rgba(0,0,0,0.55)); }
     .hero-content { position:absolute; inset:0; display:grid; place-items:center; text-align:center; color:#fff; }
    
     .hero-content h1 { font-size:clamp(2rem,4vw,3.5rem); font-weight:700; color:var(--highlight); opacity:0; }
@@ -173,7 +174,7 @@
   <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">
-      <img src="https://dummyimage.com/120x45/2563eb/ffffff&text=LOGO" alt="Logo Empresa">
+      <img src="https://www.shutterstock.com/image-vector/colorful-color-royal-lotus-flower-260nw-1043607397.jpg" alt="Logo Empresa">
     </div>
     <ul class="nav-links">
       <li class="close-mobile"><button id="closeMenu"><i class="fas fa-times"></i></button></li>
@@ -187,16 +188,6 @@
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   </nav>
 
-  <!-- Panel de redes sociales -->
-  <div class="social-panel" id="socialPanel">
-    <button class="close-btn" id="closeSocial"><i class="fas fa-times"></i></button>
-    <div class="social-links">
-      <a href="https://facebook.com/tuempresa" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
-      <a href="https://instagram.com/tuempresa" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-      <a href="https://wa.me/56912345678" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    </div>
-  </div>
-
   <!-- Botón flotante WhatsApp -->
   <a href="https://wa.me/56912345678" target="_blank" class="whatsapp-float">
     <i class="fab fa-whatsapp"></i>
@@ -207,7 +198,7 @@
     <div class="slider" id="slider">
       <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=1600&auto=format&fit=crop');"></div>
       <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?q=80&w=1600&auto=format&fit=crop');"></div>
-      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1502005229762-cf1b2da7c52f?q=80&w=1600&auto=format&fit=crop');"></div>
+      <div class="slide" style="background-image:url('https://plus.unsplash.com/premium_photo-1687960116228-13d383d20188?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aGVybW9zYSUyMGNhc2F8ZW58MHx8MHx8fDA%3D');"></div>
     </div>
     <div class="slider-overlay"></div>
     <div class="hero-content">
@@ -246,34 +237,50 @@
       </div>
     </section>
 
-    <section id="galeria">
-      <h2>Galería de proyectos</h2>
-      <p class="lead">
-        Proyectos ejecutados y vigentes. Al iniciar un nuevo proyecto, lo incorporamos aquí para seguimiento visual.
-      </p>
+<section id="galeria">
+  <h2>Galería de proyectos</h2>
+  <p class="lead">
+    Proyectos ejecutados y vigentes. Al iniciar un nuevo proyecto, lo incorporamos aquí para seguimiento visual.
+  </p>
 
-      <div class="gallery">
-        <!-- Ejecutados -->
-        <figure class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200&auto=format&fit=crop" alt="Casa moderna ejecutada 1">
-          <figcaption class="badge">Ejecutado</figcaption>
-        </figure>
-        <figure class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1200&auto=format&fit=crop" alt="Casa moderna ejecutada 2">
-          <figcaption class="badge">Ejecutado</figcaption>
-        </figure>
+  <div class="gallery">
+    <!-- Ejecutados -->
+    <figure class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1200&auto=format&fit=crop" alt="Casa moderna ejecutada 1">
+      <figcaption class="badge">Ejecutado</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1200&auto=format&fit=crop" alt="Casa moderna ejecutada 2">
+      <figcaption class="badge">Ejecutado</figcaption>
+    </figure>
 
-        <!-- Vigentes -->
-        <figure class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1200&auto=format&fit=crop" alt="Proyecto vigente 1">
-          <figcaption class="badge">Vigente</figcaption>
-        </figure>
-        <figure class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=1200&auto=format&fit=crop" alt="Proyecto vigente 2">
-          <figcaption class="badge">Vigente</figcaption>
-        </figure>
-      </div>
-    </section>
+    <!-- Vigentes -->
+    <figure class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1200&auto=format&fit=crop" alt="Proyecto vigente 1">
+      <figcaption class="badge">Vigente</figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?q=80&w=1200&auto=format&fit=crop" alt="Proyecto vigente 2">
+      <figcaption class="badge">Vigente</figcaption>
+    </figure>
+  </div>
+
+  <!-- Botón centrado -->
+  <div style="text-align:center; margin-top:2rem;">
+    <a href="#proyectos" class="btn" style="
+      display:inline-block;
+      background:#2563eb;
+      color:#fff;
+      padding:.8rem 1.5rem;
+      border-radius:.5rem;
+      text-decoration:none;
+      font-weight:600;
+      transition:.3s;">
+      Conoce más proyectos
+    </a>
+  </div>
+</section>
+
   </main>
 
   <footer>
@@ -281,7 +288,7 @@
       <!-- Información de contacto -->
       <div>
         <h3>Contacto</h3>
-        <p>📍 San Fernando, Chile</p>
+        <p>📍 Curicó, Chile</p>
         <p>📞 +56 9 1234 5678</p>
         <p>✉️ contacto@tuempresa.cl</p>
       </div>
@@ -308,7 +315,7 @@
 
     <div class="footer-bottom">
       © 2026 Tu Empresa — Todos los derechos reservados<br>
-      <span>Hecho por Jg Freelance</span>
+      <span>Powered By Jg Freelance</span>
     </div>
   </footer>
 
@@ -339,22 +346,9 @@
     const navLinks = document.querySelector('.nav-links');
     hamburger.addEventListener('click', () => navLinks.classList.toggle('show'));
 
-    // Panel de redes sociales
-    const socialPanel = document.getElementById('socialPanel');
-    const closeSocial = document.getElementById('closeSocial');
-    const contactLink = document.querySelector('a[href="#contacto"]');
 
-    if (contactLink) {
-      contactLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        socialPanel.classList.add('show');
-      });
-    }
-    closeSocial.addEventListener('click', () => {
-      socialPanel.classList.remove('show');
-    });
-  </script>
-  <script>
+    
+  
   const closeMenu = document.getElementById('closeMenu');
   closeMenu.addEventListener('click', () => {
     document.querySelector('.nav-links').classList.remove('show');
