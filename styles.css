@@ -163,7 +163,7 @@ background-repeat: no-repeat;
 background-attachment: fixed;
 background-size: cover;
 background-position: center;
-color:rgb(255, 222, 173);}
+color:rgba(255, 222, 173, 0.842);}
 
 /* Formulario de contacto */
 .contact-form {
