@@ -1,43 +1,28 @@
+/* ===== Reset y base ===== */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: #f5f5f5;
   color: #333;
+  padding-top: 70px; /* espacio para el header fijo */
 }
 
-/* Header y navegación */
+/* ===== Header y navegación ===== */
 header {
   background: linear-gradient(90deg, #2e7d32, #66bb6a);
   color: white;
   padding: 10px;
+  position: fixed;   /* fijo arriba */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;     /* encima del contenido */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
-
-/* Loader */
-#loader {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: #f5f5f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
-
-.spinner {
-  font-size: 4rem;
-  color: #2e7d32;
-  animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-  100% { transform: rotate(360deg); }
-}
-
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content:space-around;
   align-items: center;
 }
 
@@ -61,22 +46,51 @@ header {
   color: white;
 }
 
-/* Banner y carrusel */
+/* ===== Loader ===== */
+#loader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.spinner {
+  font-size: 4rem;
+  color: #2e7d32;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== Banner y carrusel ===== */
 .banner {
   position: relative;
   height: 80vh;
   overflow: hidden;
 }
 
-.carousel .slide {
-  display: none;
-  position: absolute;
+.carousel {
+  position: relative;
   width: 100%;
   height: 100%;
 }
 
+.carousel .slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out; /* efecto fade */
+}
+
 .carousel .slide.active {
-  display: block;
+  opacity: 1;
 }
 
 .carousel img {
@@ -97,21 +111,7 @@ header {
   font-size: 1.2rem;
 }
 
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  font-size: 2rem;
-  padding: 10px;
-  cursor: pointer;
-}
-.prev { left: 10px; }
-.next { right: 10px; }
-
-/* Secciones */
+/* ===== Secciones ===== */
 .materials, #impacto, #equipo, #galeria, #contacto {
   text-align: center;
   padding: 50px 20px;
@@ -158,6 +158,13 @@ header {
   transform: scale(1.05);
 }
 
+#contacto{background:url("contacto.jpg");
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
+background-position: center;
+color:rgb(255, 222, 173);}
+
 /* Formulario de contacto */
 .contact-form {
   display: flex;
@@ -181,6 +188,25 @@ header {
 }
 .contact-form button:hover {
   background: #1b5e20;
+}
+
+/* Mensajes del formulario */
+#form-message {
+  margin-top: 20px;
+  font-weight: 600;
+  padding: 12px;
+  border-radius: 5px;
+  display: none;
+}
+#form-message.success {
+  background: #c8e6c9;
+  color: #2e7d32;
+  display: block;
+}
+#form-message.error {
+  background: #ffcdd2;
+  color: #c62828;
+  display: block;
 }
 
 /* Footer */
@@ -215,75 +241,25 @@ footer {
   background-color: #20b858;
 }
 
-/* Responsivo */
+/* ===== Responsivo ===== */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
     flex-direction: column;
     background: #2e7d32;
     position: absolute;
-    top: 60px;
+    top: 60px;   /* debajo del header fijo */
     right: 0;
     width: 200px;
     padding: 10px;
-  }
-  .nav-links.active { display: flex; }
-  .hamburger { display: block; }
-}
-@media (max-width: 768px) {
-  .nav-links {
-    display: none; /* oculto por defecto */
-    flex-direction: column;
-    background: #2e7d32;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    width: 200px;
-    padding: 10px;
-    z-index: 999; /* importante para que quede encima */
+    z-index: 999;
   }
 
   .nav-links.active {
-    display: flex; /* se muestra cuando JS agrega la clase */
+    display: flex;
   }
 
   .hamburger {
-    display: block; /* visible en móvil */
+    display: block;
   }
-}
-.carousel {
-  position: relative;
-  width: 100%;
-  height: 80vh;
-  overflow: hidden;
-}
-
-.carousel .slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out; /* efecto de desvanecimiento */
-}
-
-.carousel .slide.active {
-  opacity: 1;
-}
-
-.carousel img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(0.8);
-}
-
-.caption {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(46, 125, 50, 0.7);
-  color: white;
-  padding: 12px 18px;
-  border-radius: 8px;
-  font-size: 1.2rem;
 }
