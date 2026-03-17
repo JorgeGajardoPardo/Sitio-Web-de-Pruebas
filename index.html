@@ -3,135 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reciclajes Industriales Tudela</title>
-  <link rel="stylesheet" href="styles.css">
-  <!-- Iconos de FontAwesome -->
+  <title>Reciclajes Tudela</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Raleway:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <!-- Loader -->
   <div id="loader">
-    <i class="fas fa-recycle spinner"></i>
+    <i class="fas fa-recycle loader-icon spin"></i>
   </div>
 
-  <!-- Nav -->
-  <header>
-    <nav class="navbar">
-      <div class="logo">♻️ Reciclajes Tudela</div>
-      <button class="hamburger"><i class="fas fa-bars"></i></button>
-      <ul class="nav-links">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#impacto">Nosotros</a></li>
-        <li><a href="#equipo">Equipo</a></li>
-        <li><a href="#galeria">Galería</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Navegación -->
+<nav>
+  <div class="logo">
+    <span>Reciclajes Tudela</span>
+  </div>
+  <ul class="menu">
+    <li><a href="#inicio"> Inicio</a></li>
+    <li><a href="#sobre-nosotros"> Sobre Nosotros</a></li>
+    <li><a href="#servicios"> Servicios</a></li>
+    <li><a href="#galeria"> Galería</a></li>
+    <li><a href="#contacto"><i class="fas fa-phone"></i> Contacto</a></li>
+  </ul>
+  <div class="hamburger"><i class="fas fa-bars"></i></div>
+</nav>
 
+<header id="inicio">
+  <div class="carousel">
+    <div class="slide fade"><img src="1000097372.jpg" alt="Reciclaje 1"></div>
+    <div class="slide fade"><img src="1000097373.jpg" alt="Reciclaje 2"></div>
+    <div class="slide fade"><img src="1000097371.jpg" alt="Reciclaje 3"></div>
+  </div>
+  <div class="header-text">
+    <h1><i class="fas fa-seedling"></i> Construimos sostenibilidad</h1>
+    <p>Más de 20 años cuidando el medio ambiente</p>
+  </div>
+</header>
 
-  <!-- Banner -->
-  <section id="inicio" class="banner">
-    <div class="carousel">
-      <div class="slide active"><img src="patio.jpg" alt="Reciclaje de cartón"><div class="caption">Reciclamos Cartón</div></div>
-      <div class="slide"><img src="vidrio.jpg" alt="Reciclaje de vidrio"><div class="caption">Reciclamos Vidrio</div></div>
-      <div class="slide"><img src="img.jpg" alt="Reciclaje de plástico"><div class="caption">Reciclamos Plástico</div></div>
-    </div>
-  </section>
+  <!-- Sobre Nosotros -->
+<section id="sobre-nosotros">
+  <h2><i class="fas fa-leaf"></i> Sobre Nosotros</h2>
+  <p class="fade-in">
+    Reciclajes Tudela es una empresa con más de 20 años de trayectoria en el rubro del reciclaje, 
+    fundada por Don Pedro Tudela Ramírez. Desde nuestros inicios hemos trabajado con compromiso 
+    y responsabilidad, consolidándonos como un referente en la Sexta Región en la gestión de residuos.
+  </p>
+  <p class="fade-in">
+    Colaboramos estrechamente con empresas líderes como Sorepa (CMPC), cadenas de supermercados, 
+    packings agrícolas y particulares en comunas como San Fernando, Rengo, Las Cabras, San Vicente, 
+    Santa Cruz y Chimbarongo. Nuestro objetivo es ofrecer soluciones eficientes y sostenibles 
+    que contribuyan al cuidado del medio ambiente y al desarrollo de la economía circular.
+  </p>
+  <p class="fade-in">
+    Cada mes reciclamos aproximadamente 300 toneladas de cartón, lo que equivale a salvar cerca de 
+    <strong id="arboles"></strong> árboles. Además, gestionamos el reciclaje de fierro y chatarra, 
+    vidrio, plásticos (nylon y botellas plásticas) y aceite de cocina en desuso. 
+    Estos esfuerzos permiten reducir la contaminación, fomentar la reutilización de materiales 
+    y evitar la tala indiscriminada de bosques.
+  </p>
+  <p class="fade-in">
+    Nuestra misión es promover prácticas responsables de reciclaje que generen un impacto positivo 
+    en la comunidad y en el planeta. Nuestra visión es ser líderes regionales en innovación y 
+    sustentabilidad, ofreciendo servicios confiables y adaptados a las necesidades de cada cliente.
+  </p>
+  <p class="fade-in">
+    En Reciclajes Tudela creemos en la importancia de la educación ambiental y el compromiso social. 
+    Por ello, trabajamos día a día para crear conciencia sobre la relevancia del reciclaje y 
+    construir un futuro más limpio y sostenible para las próximas generaciones.
+  </p>
+</section>
 
   <!-- Servicios -->
-  <section id="servicios" class="materials">
-    <h2>Materiales que reciclamos</h2>
-    <div class="icons">
-      <div class="item"><i class="fas fa-box"></i><p>Cartón</p></div>
-      <div class="item"><i class="fas fa-wine-bottle"></i><p>Vidrio</p></div>
-      <div class="item"><i class="fas fa-cogs"></i><p>Chatarra</p></div>
-      <div class="item"><i class="fas fa-file-alt"></i><p>Papel</p></div>
-      <div class="item"><i class="fas fa-recycle"></i><p>Plástico</p></div>
-    </div>
-  </section>
-
-  <!-- Impacto -->
-  <section id="impacto">
-    <h2>Sobre Nosotros</h2>
-    <p>En Reciclajes Tudela llevamos más de 20 años comprometidos con el medio ambiente
-    , ofreciendo soluciones de reciclaje confiables y eficientes en San Fernando y la Región de O´Higgins.
-    
-    Nuestra Experiencia nos ha convertido en un referente local, trabajando de la mano con grandes cadenas 
-    comerciales, instituciones y particulares que buscan dar un destino responsable a sus residuos.
-    <br>
-    </p>
-    <h2><b>Nuestro Impacto</b></h2>
-    <p>
-    Cada mes procesamos mas de <b>300 toneladas de cartón</b>, lo que 
-    se traduce en un ahorro ambiental significativo:
-    <br>
-    </p>
-    <p>
-    ♻️ <b>Equivalencia Ambiental:</b> por cada tonelada de cartón reciclado se evita la tala de 17 árboles adultos.
-    <br>
-    ♻️ Gracias a nuestro trabajo, <b>más de 5.100 árboles</b> se salvan cada mes,
-    contribuyendo a la producción 
-    <br>
-    de oxígeno
-    y a la captura de CO2 
-    que beneficia a toda la comunidad.
-    </p>
-    <br>
-    <h2><b>Alianzas estratégicas</b></h2>
-    <p>
-      Somos <b>agentes oficiales  de Sorepa (CMPC)</b> en San Fernando, lo que garantiza que el 
-      cartón recolectado se reincorpore a la cadena productiva de manera eficiente y sustentable.
-      Esta alianza nos permite asegurar que cada kilo reciclado se transforma en nuevos productos
-      de papel y cartón , cerrando el ciclo de manera responsable.
-    </p>
-  </section>
-
-  <!-- Equipo -->
-  <section id="equipo">
-    <h2>Nuestro Equipo</h2>
-    <div class="team">
-      <div class="member"><img src="persona1.jpg" alt=""><p>Pedro Tudela Ramirez - Fundador</p></div>
-      <div class="member"><img src="persona2.jpg" alt=""><p>- Operaciones</p></div>
+  <section id="servicios">
+    <h2><i class="fas fa-industry"></i> Servicios</h2>
+    <div class="cards">
+      <div class="card"><i class="fas fa-truck"></i><h3>Retiro de material</h3></div>
+      <div class="card"><i class="fas fa-dumpster"></i><h3>Contenedor a particulares</h3></div>
+      <div class="card"><i class="fas fa-box-open"></i><h3>Enfardado de cartón</h3></div>
     </div>
   </section>
 
   <!-- Galería -->
   <section id="galeria">
-    <h2>Galería</h2>
+    <h2><i class="fas fa-image"></i> Galería</h2>
     <div class="gallery">
-      <img src="carton2.jpg" alt="Reciclaje">
-      <img src="patio.jpg" alt="Proceso">
-      <img src="camion.jpg" alt="Equipo">
+      <img src="1000097370.jpg" alt="Galería 1" onclick="openModal(this)">
+      <img src="1000097371.jpg" alt="Galería 2" onclick="openModal(this)">
+      <img src="1000097372.jpg" alt="Galería 3" onclick="openModal(this)">
+    </div>
+    <div id="modal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modal-img">
     </div>
   </section>
 
+  <!-- Contacto -->
 <section id="contacto">
-  <h2>Contáctanos</h2>
-  <form class="contact-form" action="https://formspree.io/f/mpqyakdj" method="POST">
-    <input type="text" name="nombre" placeholder="Tu nombre" required>
-    <input type="email" name="correo" placeholder="Tu correo" required>
-    <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-    <button type="submit">Enviar</button>
-  </form>
+  <h2><i class="fas fa-phone"></i> Contacto</h2>
+  <div class="contact-container">
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=La+Troya+1620,+San+Fernando,+Chile&output=embed"></iframe>
+    </div>
+    <form id="contact-form">
+      <label for="nombre"><i class="fas fa-user"></i> Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+      
+      <label for="email"><i class="fas fa-at"></i> Correo:</label>
+      <input type="email" id="email" name="email" required>
+      
+      <label for="mensaje"><i class="fas fa-comment"></i> Mensaje:</label>
+      <textarea id="mensaje" name="mensaje" required></textarea>
+      
+      <button type="submit"><i class="fas fa-paper-plane"></i> Enviar</button>
+    </form>
+  </div>
 </section>
 
 
   <!-- Footer -->
   <footer>
-    <p>📍 La Troya 1620, San Fernando, Chile | 📧 reciclajestudela@gmail.com</p>
-    <p>&copy; 2026 Reciclajes Tudela</p>
+    <p><i class="fas fa-envelope"></i> contacto@reciclajestudela.cl | 
+       <i class="fas fa-phone"></i> +56 9 1234 5678</p>
+    <p>&copy; 2026 Reciclajes Tudela - Todos los derechos reservados</p>
+    <p><a href="terminos.html"><i class="fas fa-file-contract"></i> Términos y Condiciones</a></p>
+    <p>Powered by <i class="fas fa-code"></i> Jg Freelance</p>
   </footer>
-
-  <!-- WhatsApp -->
-  <a href="https://api.whatsapp.com/send?phone=56988274341&text=Hola%20Reciclajes%20Tudela,%20quiero%20más%20información."
-   class="whatsapp-float" target="_blank">
-   <i class="fa-brands fa-whatsapp"></i>
-  </a>
-
-  <script src="script.js"></script>
 </body>
 </html>
