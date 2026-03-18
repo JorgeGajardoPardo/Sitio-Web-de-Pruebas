@@ -235,7 +235,7 @@ footer i { margin-right:6px; color:#c8e6c9; }
     font-size:28px; color:#fff; cursor:pointer;
     margin-bottom:20px;
   }
-  .header-text h1 {font-size: 1.5rem;}
+  .header-text h1 {font-size: 1.4rem;}
   header { height:100vh;}
 }
 /* Contenedor contacto */
@@ -332,7 +332,7 @@ form button {
 form button:hover { background:#2e7d32; }
 /* Contenedor del formulario con fondo parallax */
 .contact-form-container {
-  background-image:url("rec.jpg"); /* tu imagen */
+  background-image:url("eco.png"); /* tu imagen */
   background-size:cover;
   background-position:center;
   background-attachment:fixed; /* clave para el efecto parallax */
@@ -368,4 +368,74 @@ form button:hover { background:#2e7d32; }
 .contact-form-container form textarea {
   background:rgba(255,255,255,0.9);
   color:#000;
+}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3, 1fr); /* siempre 3 por fila */
+  gap:20px;
+  max-width:1200px;
+  margin:0 auto;
+}
+
+.card {
+  perspective:1000px;
+}
+
+.card-inner {
+  position:relative;
+  width:100%;
+  height:300px;
+  transition:transform 0.8s;
+  transform-style:preserve-3d;
+  cursor:pointer;
+}
+
+.card:active .card-inner,
+.card:hover .card-inner {
+  transform:rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position:absolute;
+  width:100%;
+  height:100%;
+  backface-visibility:hidden;
+  border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.card-front {
+  background:#f5f5f5;
+}
+
+.card-front img {
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  border-radius:8px;
+  margin-bottom:10px;
+}
+
+.card-back {
+  background:#4caf50;
+  color:#fff;
+  transform:rotateY(180deg);
+  text-align:center;
+}
+
+/* Responsivo: en pantallas pequeñas se ajusta */
+@media(max-width:992px){
+  .cards {
+    grid-template-columns:repeat(2, 1fr);
+  }
+}
+@media(max-width:600px){
+  .cards {
+    grid-template-columns:1fr;
+  }
 }
