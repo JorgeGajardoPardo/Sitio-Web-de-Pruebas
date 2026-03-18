@@ -196,6 +196,27 @@ footer i { margin-right:6px; color:#c8e6c9; }
   background:rgba(0,0,0,0.45);
   z-index:1;
 }
+/* Logo imagen */
+.logo {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo-img {
+  height:100px; /* tamaño estándar */
+  width:auto;
+  max-width:100%;
+}
+
+@media(max-width:768px){
+  .logo-img {
+    height:60px; /* más pequeño en móvil */
+  }
+  .logo span {
+    font-size:18px;
+  }
+}
 
 
 @media(max-width:768px){
@@ -268,3 +289,83 @@ form button:hover { background:#2e7d32; }
   }
 }
 
+/* Contacto */
+#contacto {
+  padding:80px 20px;
+  text-align:center;
+}
+
+#contacto h2 {
+  font-family:'Montserrat', sans-serif;
+  font-size:2rem;
+  margin:30px 0 20px;
+  color:#2e7d32;
+}
+
+.map iframe {
+  width:100%;
+  height:400px;
+  border:none;
+  border-radius:10px;
+  margin-bottom:40px;
+}
+
+form {
+  max-width:500px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  padding:20px;
+  background:#f5f5f5;
+  border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+form label { margin:10px 0 5px; font-weight:bold; }
+form input, form textarea {
+  padding:10px; border:1px solid #ccc; border-radius:5px; margin-bottom:15px;
+}
+form button {
+  background:#4caf50; color:#fff; border:none; padding:12px;
+  border-radius:5px; cursor:pointer; font-weight:bold; transition:background 0.3s;
+}
+form button:hover { background:#2e7d32; }
+/* Contenedor del formulario con fondo parallax */
+.contact-form-container {
+  background-image:url("rec.jpg"); /* tu imagen */
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed; /* clave para el efecto parallax */
+  border-radius:10px;
+  padding:60px 20px;
+  margin-top:20px;
+  position:relative;
+}
+
+/* Capa oscura para legibilidad */
+.contact-form-container::before {
+  content:"";
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:rgba(0,0,0,0.5);
+  border-radius:10px;
+  z-index:0;
+}
+
+/* Formulario encima del fondo */
+.contact-form-container form {
+  position:relative;
+  z-index:1;
+  max-width:500px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  color:gray;
+}
+
+.contact-form-container form input,
+.contact-form-container form textarea {
+  background:rgba(255,255,255,0.9);
+  color:#000;
+}
