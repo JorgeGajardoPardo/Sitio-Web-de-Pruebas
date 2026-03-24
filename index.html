@@ -4,42 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reciclajes Tudela</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Raleway:wght@700&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Loader -->
+     <!-- Loader -->
   <div id="loader">
     <i class="fas fa-recycle loader-icon spin"></i>
   </div>
+  <div id="page-content" style="display:none;">
 
-  <!-- Navegación -->
-<nav>
+<nav class="navbar">
   <div class="logo">
-    <img src="logo-removebg-preview.png" alt="Logo Reciclajes Tudela" class="logo-img">
+    <img src="logo-removebg-preview.png" alt="Logo Reciclajes Tudela">
   </div>
-  <ul class="menu">
-    <li><a href="#inicio">Inicio</a></li>
-    <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
-    <li><a href="#reciclamos">Reciclamos</a></li>
-    <li><a href="#galeria">Galería</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+
+  <!-- Botón hamburguesa -->
+  <button class="menu-btn" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Menú mobile -->
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Acerca de</a></li>
+    <li><a href="#">Que Reciclamos</a></li>
+    <li><a href="#">Contacto</a></li>
   </ul>
-  <div class="hamburger"><i class="fas fa-bars"></i></div>
+
+  <!-- Olas decorativas -->
+  <svg class="wave" viewBox="0 0 1440 100">
+    <path d="M0,50 C480,150 960,-50 1440,50 L1440,00 L0,0 Z" fill="#4CAF50" opacity="0.7"></path>
+    <path d="M0,60 C480,130 960,-70 1440,60 L1440,00 L0,0 Z" fill="#388E3C" opacity="0.5"></path>
+  </svg>
 </nav>
 
-
-<header id="inicio">
-  <div class="header-text">
-    <h1><i class="fas fa-seedling"></i> Construimos sostenibilidad</h1>
-    <p>Más de 20 años cuidando el medio ambiente</p>
+<!-- Header -->
+<header class="header">
+  <div class="overlay">
+    <h1>Construimos sostenibilidad <i class="fas fa-seedling"></i> </h1>
   </div>
 </header>
-
-
   <!-- Sobre Nosotros -->
 <section id="sobre-nosotros">
   <h2 class="fade-in"><i class="fas fa-leaf"></i> Sobre Nosotros</h2>
@@ -71,7 +78,6 @@
     construir un futuro más limpio y sostenible para las próximas generaciones.
   </p>
 </section>
-<!-- Lo que Reciclamos -->
 <section id="reciclamos">
   <h2><i class="fas fa-recycle fade-in"></i> Lo que Reciclamos</h2>
   <div class="cards">
@@ -193,58 +199,18 @@
 
 
 
+<!-- Botón WhatsApp flotante -->
+<a href="https://wa.me/56988274341" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+<!-- Accesibilidad -->
+<div class="accessibility">
+  <button id="increaseFont">A+</button>
+  <button id="decreaseFont">A-</button>
+  <button id="toggleTheme">🌙/☀️</button>
+</div>
 
-  <!-- Galería -->
-  <section id="galeria">
-    <h2><i class="fas fa-image"></i> Galería</h2>
-    <div class="gallery">
-      <img src="1000097370.jpg" alt="Galería 1" onclick="openModal(this)">
-      <img src="1000097371.jpg" alt="Galería 2" onclick="openModal(this)">
-      <img src="1000097372.jpg" alt="Galería 3" onclick="openModal(this)">
-      <img src="1000097373.jpg" alt="Galería 4" onclick="openModal(this)">
-      <img src="1000097381.jpg" alt="Galería 5" onclick="openModal(this)">
-      <img src="IMG-20260227-WA0018.jpg" alt="Galería 6" onclick="openModal(this)">
-    </div>
-    <div id="modal" class="modal">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <img class="modal-content" id="modal-img">
-    </div>
-  </section>
-
-  <!-- Contacto -->
-<section id="contacto">
-  <h2><i class="fas fa-map-marker-alt"></i> Ubicación</h2>
-  <div class="map">
-    <iframe src="https://www.google.com/maps?q=La+Troya+1620,+San+Fernando,+Chile&output=embed"></iframe>
   </div>
-
-  <h2><i class="fas fa-envelope"></i> Escríbenos</h2>
-  <div class="contact-form-container">
-    <form id="contact-form">
-      <label for="nombre"><i class="fas fa-user"></i> Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required>
-      
-      <label for="email"><i class="fas fa-at"></i> Correo:</label>
-      <input type="email" id="email" name="email" required>
-      
-      <label for="mensaje"><i class="fas fa-comment"></i> Mensaje:</label>
-      <textarea id="mensaje" name="mensaje" required></textarea>
-      
-      <button type="submit"><i class="fas fa-paper-plane"></i> Enviar</button>
-    </form>
-  </div>
-</section>
-
-
-
-
-  <!-- Footer -->
-  <footer>
-    <p><i class="fas fa-envelope"></i> Reciclajestudela@gmail.com| 
-       <i class="fas fa-phone"></i> +56 9 88274341</p>
-    <p>&copy; 2026 Reciclajes Tudela - Todos los derechos reservados</p>
-    <p><a href="terminos.html"><i class="fas fa-file-contract"></i> Términos y Condiciones</a></p>
-    <p>Powered by <i class="fas fa-code"></i> Jg Freelance</p>
-  </footer>
+<script src="js/scripts.js" defer></script>
 </body>
 </html>
