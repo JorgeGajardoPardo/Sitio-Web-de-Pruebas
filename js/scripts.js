@@ -17,42 +17,6 @@ menuBtn.addEventListener('click', () => {
   menuBtn.classList.toggle('active');
 });
 
-const galleryImages = document.querySelectorAll('.gallery img');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const closeBtn = document.querySelector('#lightbox .close');
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
-
-let currentIndex = 0;
-
-galleryImages.forEach((img, index) => {
-  img.addEventListener('click', () => {
-    currentIndex = index;
-    showImage();
-  });
-});
-
-function showImage() {
-  lightboxImg.src = galleryImages[currentIndex].src;
-  lightbox.classList.remove('hidden');
-}
-
-closeBtn.addEventListener('click', () => {
-  lightbox.classList.add('hidden');
-});
-
-prevBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-  showImage();
-});
-
-nextBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % galleryImages.length;
-  showImage();
-});
-
-
 document.querySelectorAll('.card').forEach(card => {
   card.addEventListener('click', () => {
     document.querySelectorAll('.card').forEach(c => {
@@ -61,12 +25,6 @@ document.querySelectorAll('.card').forEach(card => {
     card.classList.toggle('active');
   });
 });
-
-document.querySelector(".contact-toggle").addEventListener("click", function() {
-  const form = document.querySelector(".contact-form");
-  form.style.display = (form.style.display === "block") ? "none" : "block";
-});
-
 
 let fontSize = 16; 
 document.getElementById('increaseFont').addEventListener('click', () => {
