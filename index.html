@@ -56,9 +56,9 @@
     y responsabilidad, consolidándonos como un referente en la Sexta Región en la gestión de residuos.
   </p>
   <p class="fade-in">
-    Colaboramos estrechamente con empresas líderes, cadenas de supermercados, 
+    Colaboramos estrechamente con empresas líderes a nivel nacional, cadenas de supermercados, 
     packings agrícolas y particulares en comunas como San Fernando, Rengo, Las Cabras, San Vicente, 
-    Santa Cruz y Chimbarongo. Nuestro objetivo es ofrecer soluciones eficientes y sostenibles 
+    Santa Cruz, Pichilemu y Chimbarongo. Nuestro objetivo es ofrecer soluciones eficientes y sostenibles 
     que contribuyan al cuidado del medio ambiente y al desarrollo de la economía circular.
   </p>
   <p class="fade-in">
@@ -79,7 +79,15 @@
   </p>
 </section>
 <section id="reciclamos">
-  <h2><i class="fas fa-recycle fade-in"></i> Lo que Reciclamos</h2>
+  <h2 class="fade-in"><i class="fas fa-recycle "></i> Lo que Reciclamos</h2>
+  <p class="fade-in">Recibimos y compramos materiales reciclables de manera responsable. 
+    
+Nuestro compromiso es facilitar la correcta gestión de residuos, asegurando que cada elemento sea procesado y enviado a las plantas correspondientes para su transformación en nuevos insumos productivos.
+<br>
+Trabajamos para que cada material tenga el destino adecuado, contribuyendo al cuidado del medioambiente y a la cadena de producción sustentable.
+<br>
+♻️ Materiales que recibimos o adquirimos incluyen:
+</p>
   <div class="cards">
 
     <!-- Cartón -->
@@ -197,6 +205,84 @@
   </div>
 </section>
 
+<section id="galeria">
+  <h2 class="fade-in">Galería</h2>
+  <div class="gallery">
+    <div class="gallery-item fade-in">
+      <img src="imagen.jpg" alt="Foto 1">
+      <div class="caption">Reciclaje en acción</div>
+    </div>
+    <div class="gallery-item fade-in">
+      <img src="img.jpg" alt="Foto 2">
+      <div class="caption">Clasificación de materiales</div>
+    </div>
+    <div class="gallery-item fade-in">
+      <img src="IMG-20260227-WA0018.jpg" alt="Foto 3">
+      <div class="caption">Equipo de trabajo</div>
+    </div>
+    <div class="gallery-item fade-in">
+      <img src="camion.jpg" alt="Foto 4">
+      <div class="caption">Transporte sustentable</div>
+    </div>
+    <div class="gallery-item fade-in">
+      <img src="carton.jpg" alt="Foto 5">
+      <div class="caption">Cartón reciclado</div>
+    </div>
+    <div class="gallery-item fade-in">
+      <img src="carton2.jpg" alt="Foto 6">
+      <div class="caption">Proceso de compactado</div>
+    </div>
+    <div class="gallery-item fade-in">
+      <img src="ecoclogia.png" alt="Foto 7">
+      <div class="caption">Compromiso ecológico</div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="hidden">
+    <span class="close">&times;</span>
+    <img id="lightbox-img" src="" alt="Imagen ampliada">
+    <button id="prev">⟨</button>
+    <button id="next">⟩</button>
+  </div>
+</section>
+
+<section id="mapa">
+  <h2>Ubicación</h2>
+  <div class="map-container">
+    <iframe 
+      src="https://www.google.com/maps?q=La+Troya+1400,+San+Fernando,+Chile&output=embed"
+      allowfullscreen=""
+      loading="lazy">
+    </iframe>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="contact-wrapper">
+    <!-- Botón estilo sobre -->
+    <button class="contact-toggle">✉️ Contáctanos</button>
+
+    <!-- Formulario oculto -->
+    <form class="contact-form" id="formulario-contacto">
+      <h2>Formulario de Contacto</h2>
+      
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="asunto">Asunto</label>
+      <input type="text" id="asunto" name="asunto" required>
+
+      <label for="correo">Correo</label>
+      <input type="email" id="correo" name="correo" required>
+
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+      <button type="submit" class="btn-enviar">Enviar</button>
+    </form>
+  </div>
+</section>
 
 
 <!-- Botón WhatsApp flotante -->
@@ -210,6 +296,31 @@
   <button id="toggleTheme">🌙/☀️</button>
 </div>
 
+  <footer id="footer">
+  <div class="footer-container">
+    <!-- Horario -->
+    <div class="footer-section">
+      <h3>⏰ Horario de Atención</h3>
+      <p>Lunes a Viernes: 8:30 - 18:30</p>
+      <p>Sábados: 8:30 - 11:30</p>
+      <p>Domingos y festivos cerrado</p>
+    </div>
+
+    <!-- Contacto -->
+    <div class="footer-section">
+      <h3>📞 Contacto</h3>
+      <p>Correo:reciclajestudela@gmail.com</p>
+      <p>Teléfono: +56 988 274 341</p>
+    </div>
+
+    <!-- Marca -->
+    <div class="footer-section">
+      <h3>♻️ Reciclajes Tudela</h3>
+      <p>© Todos los derechos reservados</p>
+      <p class="powered">Powered by <strong>JG Freelance</strong></p>
+    </div>
+  </div>
+</footer>
   </div>
 <script src="js/scripts.js" defer></script>
 </body>
