@@ -203,7 +203,14 @@ section {
   margin: 0 auto 1.25rem auto;
 }
 #reciclamos {
+  background: url("../pngwing.com.png");
+  background-position: center;
+  background-repeat:no-repeat;
+  background-size: cover;
   padding: 4rem 1rem;
+  text-align: center;
+   line-height: 1.8;
+    padding: 5rem 1.25rem;
   text-align: center;
 }
 
@@ -212,7 +219,10 @@ section {
   margin-bottom: 2rem;
   color: #2e7d32;
 }
-
+#reciclamos p{
+   max-width: 56.25rem;
+  margin: 0 auto 1.25rem auto;
+}
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -251,7 +261,7 @@ section {
 }
 
 .card-front {
-  background: #fff;
+  background: #ffffff1e;
 }
 
 .card-front img {
@@ -285,6 +295,253 @@ section {
   line-height: 1.5;
 }
 
+/* Sección Galería */
+#galeria {
+  padding: 3.75rem 1.25rem; /* 60px 20px */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fondo degradado animado ida y vuelta */
+#galeria::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 200%; height: 100%; /* ancho mayor para desplazar */
+  background: linear-gradient(
+    to right,
+    #c8e6c9,   /* verde muy claro */
+    #4caf50,   /* verde reciclaje */
+    #2e7d32    /* verde intenso */
+  );
+  animation: move-gradient 8s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+/* Animación: ida y vuelta */
+@keyframes move-gradient {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.gallery {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem; /* 20px */
+  z-index: 1; /* asegura que las fotos estén sobre el fondo */
+}
+
+.gallery img {
+  width: 15rem;   /* 240px estándar */
+  height: 10rem;  /* 160px estándar */
+  object-fit: cover; /* recorta manteniendo proporción */
+  cursor: pointer;
+  border-radius: 0.625rem; /* 10px */
+  box-shadow: 0 0.625rem 1.25rem rgba(0,0,0,0.3); /* sombra más marcada */
+  transition: transform 0.3s, z-index 0.3s;
+  position: relative;
+}
+
+/* Efecto superposición */
+.gallery img:nth-child(1) {
+  transform: rotate(-3deg) translateY(0.625rem);
+  z-index: 1;
+}
+.gallery img:nth-child(2) {
+  transform: rotate(2deg) translateY(-0.625rem);
+  z-index: 2;
+}
+.gallery img:nth-child(3) {
+  transform: rotate(-1deg) translateY(0.3125rem);
+  z-index: 3;
+}
+
+/* Hover: trae la foto al frente */
+.gallery img:hover {
+  transform: scale(1.05) rotate(0deg) translateY(0);
+  z-index: 10;
+}
+
+/* Lightbox */
+#lightbox {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+#lightbox.hidden { display: none; }
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 0.625rem; /* 10px */
+}
+
+#lightbox .close {
+  position: absolute;
+  top: 1.25rem; right: 1.875rem; /* 20px 30px */
+  font-size: 2.5rem; /* 40px */
+  color: #fff;
+  cursor: pointer;
+}
+
+#lightbox button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 2.5rem; /* 40px */
+  color: #fff;
+  cursor: pointer;
+}
+#prev { left: 1.875rem; } /* 30px */
+#next { right: 1.875rem; }
+
+#mapa {
+  padding: 3.75rem 1.25rem; /* 60px 20px */
+  text-align: center;
+}
+.map-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* relación 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 0.625rem; /* 10px */
+  box-shadow: 0 0.25rem 0.625rem rgba(0,0,0,0.1); /* 4px 10px */
+}
+.map-container iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+
+/* Footer */
+#footer {
+  background: linear-gradient(135deg, #2e7d32, #388e3c); /* degradado verde */
+  color: #fff;
+  padding: 2.5rem 1rem;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+  min-width: 220px;
+}
+
+.footer-section h3 {
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+  color: #c8e6c9;
+  border-bottom: 2px solid #81c784;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.footer-section p {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+}
+
+.footer-section .powered {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: #a5d6a7;
+}
+
+/* Hover efecto */
+.footer-section h3:hover {
+  color: #fff;
+  transition: color 0.3s ease;
+}
+
+/* Sección contacto */
+#contacto {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+/* Botón estilo sobre */
+.contact-toggle {
+  background: #2e7d32;
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.contact-toggle:hover {
+  background: #388e3c;
+}
+
+/* Formulario oculto */
+.contact-form {
+  display: none;
+  margin-top: 2rem;
+  background: #f9f9f9;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-form h2 {
+  margin-bottom: 1rem;
+  color: #2e7d32;
+}
+
+.contact-form label {
+  display: block;
+  margin: 0.5rem 0 0.2rem;
+  font-weight: bold;
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.btn-enviar {
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.btn-enviar:hover {
+  background: #388e3c;
+}
+
 
 /* Accesibilidad */
 .accessibility {
@@ -293,46 +550,138 @@ section {
   right: 0.625rem;
   display: flex;
   gap: 0.5rem;
+  z-index: 200;
 }
 
+.accessibility button {
+  background: #2e7d32;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+}
+
+.accessibility button:hover {
+  background: #388e3c;
+}
+
+/* Tema oscuro global */
 .dark-mode {
   background: #121212;
   color: #e0e0e0;
 }
 
+/* Navbar */
 .dark-mode .navbar {
   background: #1e1e1e;
   color: #e0e0e0;
 }
-
 .dark-mode .nav-links li a {
   color: #c8e6c9;
 }
 
+/* Header */
 .dark-mode .header {
   background: url('../Copilot_20260323_084437.png') center/cover no-repeat;
   filter: brightness(0.6); 
 }
-
 .dark-mode .header .overlay {
   background: rgba(0,0,0,0.6);
   color: #e0e0e0;
 }
 
+/* Sobre nosotros */
 .dark-mode #sobre-nosotros {
   background: #1e1e1e;
   color: #e0e0e0;
 }
-
 .dark-mode #sobre-nosotros h2 {
   color: #81c784;
 }
 
+/* Reciclamos */
+.dark-mode #reciclamos {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+.dark-mode #reciclamos h2 {
+  color: #81c784;
+}
+
+/* Cards */
+.dark-mode .card-front {
+  background: #1e1e1e;
+}
+.dark-mode .card-front h3 {
+  color: #81c784;
+}
+.dark-mode .card-back {
+  background: #333;
+  color: #e0e0e0;
+}
+
+/* Galería */
+.dark-mode #galeria {
+  background: #1e1e1e;
+}
+.dark-mode #galeria h2 {
+  color: #81c784;
+}
+.dark-mode .gallery img {
+  box-shadow: 0 0.5rem 1rem rgba(255,255,255,0.1);
+}
+
+/* Mapa */
+.dark-mode #mapa {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+.dark-mode .map-container {
+  box-shadow: 0 0.25rem 0.625rem rgba(255,255,255,0.1);
+}
+
+/* Footer */
+.dark-mode #footer {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+.dark-mode .footer-section h3 {
+  color: #81c784;
+  border-bottom: 2px solid #4caf50;
+}
+.dark-mode .footer-section .powered {
+  color: #c8e6c9;
+}
+
+/* Formulario de contacto */
+.dark-mode .contact-form {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+.dark-mode .contact-form input,
+.dark-mode .contact-form textarea {
+  background: #333;
+  color: #e0e0e0;
+  border: 1px solid #555;
+}
+.dark-mode .btn-enviar {
+  background: #4caf50;
+}
+.dark-mode .btn-enviar:hover {
+  background: #81c784;
+}
+
+/* Botones accesibilidad en modo oscuro */
 .dark-mode .accessibility button {
   background: #333;
   color: #e0e0e0;
   border: 1px solid #555;
 }
+
+
 
 /* Mobile */
 @media (max-width: 48rem) { /* 768px */
@@ -345,7 +694,7 @@ section {
   }
 
   .header h1 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
   
   h1 { font-size: 1.8rem; }
@@ -450,3 +799,26 @@ section {
 
 
 
+/* Responsive */
+@media (max-width: 48rem) { /* 768px */
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-section {
+    flex: none;
+    width: 100%;
+  }
+}
+
+/* Responsivo */
+@media (max-width: 48rem) {
+  .contact-form {
+    padding: 1.5rem;
+  }
+  .contact-toggle {
+    width: 100%;
+  }
+}
