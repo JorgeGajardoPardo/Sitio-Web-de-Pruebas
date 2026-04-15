@@ -830,7 +830,7 @@ section {
 
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
@@ -849,7 +849,7 @@ section {
 
 .card-inner img {
   width: 100%;
-  height: 200px;
+  height: 300px;
   object-fit: cover;
   transition: filter 0.4s ease;
 }
