@@ -1,115 +1,188 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
+  /* Loader */
   const loader = document.getElementById("loader");
   const content = document.getElementById("page-content");
+  if (loader && content) {
+    loader.classList.add("fade-out");
+    setTimeout(() => {
+      loader.style.display = "none";
+      content.style.display = "block";
+    }, 800);
+  }
 
-  loader.classList.add("fade-out");
-  setTimeout(() => {
-    loader.style.display = "none";
-    content.style.display = "block";
-  }, 800);
-});
+  /* Menú responsive */
+  const menuBtn = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (menuBtn && navLinks) {
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+      menuBtn.classList.toggle('active');
+    });
+  }
 
-const menuBtn = document.getElementById('menuToggle');
-const navLinks = document.getElementById('navLinks');
+  /* Carrusel ping-pong */
+  const track = document.querySelector('.carousel-track');
+  const items = document.querySelectorAll('.gallery-item');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  const nextBtn = document.querySelector('.carousel-btn.next');
 
-menuBtn.addEventListener('click', () => {
-  navLinks.classList.toggle('show');
-  menuBtn.classList.toggle('active');
-});
+  let index = 0;
+  let direction = 1; // 1 = adelante, -1 = atrás
 
-const galleryImages = document.querySelectorAll('.gallery img');
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const closeBtn = document.querySelector('#lightbox .close');
-const prevBtn = document.getElementById('prev');
-const nextBtn = document.getElementById('next');
+  function updateCarousel() {
+    track.style.transition = "transform 0.8s ease-in-out";
+    track.style.transform = `translateX(${-index * 100}%)`;
+  }
 
-let currentIndex = 0;
+  prevBtn.addEventListener('click', () => {
+    if (index > 0) {
+      index--;
+      direction = -1;
+      updateCarousel();
+    }
+  });
 
-galleryImages.forEach((img, index) => {
-  img.addEventListener('click', () => {
-    currentIndex = index;
+  nextBtn.addEventListener('click', () => {
+    if (index < items.length - 1) {
+      index++;
+      direction = 1;
+      updateCarousel();
+    }
+  });
+
+  /* Autoplay ping-pong */
+  let autoplay = setInterval(() => {
+    if (direction === 1) {
+      if (index < items.length - 1) {
+        index++;
+      } else {
+        direction = -1;
+        index--;
+      }
+    } else {
+      if (index > 0) {
+        index--;
+      } else {
+        direction = 1;
+        index++;
+      }
+    }
+    updateCarousel();
+  }, 3000);
+
+  const carousel = document.querySelector('.carousel');
+  carousel.addEventListener('mouseenter', () => clearInterval(autoplay));
+  carousel.addEventListener('mouseleave', () => {
+    autoplay = setInterval(() => {
+      if (direction === 1) {
+        if (index < items.length - 1) {
+          index++;
+        } else {
+          direction = -1;
+          index--;
+        }
+      } else {
+        if (index > 0) {
+          index--;
+        } else {
+          direction = 1;
+          index++;
+        }
+      }
+      updateCarousel();
+    }, 3000);
+  });
+
+  /* Lightbox */
+  const galleryImages = document.querySelectorAll('.gallery-item img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.querySelector('#lightbox .close');
+  const prevLightbox = document.querySelector('#lightbox #prev');
+  const nextLightbox = document.querySelector('#lightbox #next');
+
+  let currentIndex = 0;
+
+  function showImage() {
+    lightboxImg.src = galleryImages[currentIndex].src;
+    lightbox.classList.remove('hidden');
+  }
+
+  galleryImages.forEach((img, i) => {
+    img.addEventListener('click', () => {
+      currentIndex = i;
+      showImage();
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.classList.add('hidden');
+  });
+
+  prevLightbox.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
     showImage();
   });
-});
 
-function showImage() {
-  lightboxImg.src = galleryImages[currentIndex].src;
-  lightbox.classList.remove('hidden');
-}
-
-closeBtn.addEventListener('click', () => {
-  lightbox.classList.add('hidden');
-});
-
-prevBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-  showImage();
-});
-
-nextBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % galleryImages.length;
-  showImage();
-});
-
-
-document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('click', () => {
-    document.querySelectorAll('.card').forEach(c => {
-      if (c !== card) c.classList.remove('active');
-    });
-    card.classList.toggle('active');
+  nextLightbox.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    showImage();
   });
-});
 
-document.querySelector(".contact-toggle").addEventListener("click", function() {
-  const form = document.querySelector(".contact-form");
-  form.style.display = (form.style.display === "block") ? "none" : "block";
-});
+  /* Tarjetas interactivas */
 
+  /* Formulario de contacto */
+  const contactToggle = document.querySelector(".contact-toggle");
+  const contactForm = document.querySelector(".contact-form");
+  if (contactToggle && contactForm) {
+    contactToggle.addEventListener("click", () => {
+      contactForm.style.display = (contactForm.style.display === "block") ? "none" : "block";
+    });
+  }
 
-let fontSize = 16; 
-document.getElementById('increaseFont').addEventListener('click', () => {
-  fontSize += 2;
-  document.documentElement.style.fontSize = fontSize + 'px'; 
-});
+  /* Accesibilidad: tamaño de fuente */
+  let fontSize = 16; 
+  const increaseFont = document.getElementById('increaseFont');
+  const decreaseFont = document.getElementById('decreaseFont');
+  if (increaseFont) {
+    increaseFont.addEventListener('click', () => {
+      fontSize += 2;
+      document.documentElement.style.fontSize = fontSize + 'px'; 
+    });
+  }
+  if (decreaseFont) {
+    decreaseFont.addEventListener('click', () => {
+      fontSize = Math.max(12, fontSize - 2);
+      document.documentElement.style.fontSize = fontSize + 'px';
+    });
+  }
 
-document.getElementById('decreaseFont').addEventListener('click', () => {
-  fontSize -= 2;
-  document.documentElement.style.fontSize = fontSize + 'px';
-});
+  /* Accesibilidad: modo oscuro */
+  const toggleTheme = document.getElementById('toggleTheme');
+  if (toggleTheme) {
+    toggleTheme.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode'); 
+    });
+  }
 
-document.getElementById('toggleTheme').addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode'); 
-});
-
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Selecciona todos los elementos con fade-in
+  /* Animaciones fade-in */
   const fadeElements = document.querySelectorAll(".fade-in");
-
-  // Caso especial: título y primer párrafo de "Sobre Nosotros"
   const sobreTitulo = document.querySelector("#sobre-nosotros h2");
   const sobreParrafos = document.querySelectorAll("#sobre-nosotros p");
 
-  // Mostrar título inmediatamente
   if (sobreTitulo) {
     sobreTitulo.classList.add("visible");
   }
 
-  // Mostrar primer párrafo con retraso de 2.5 segundos
   if (sobreParrafos.length > 0) {
     setTimeout(() => {
       sobreParrafos[0].classList.add("visible");
     }, 2500);
   }
 
-  // Función para mostrar el resto de elementos al hacer scroll
   function checkVisibility() {
     fadeElements.forEach(el => {
-      // Evita volver a animar el título y el primer párrafo
       if (el === sobreTitulo || el === sobreParrafos[0]) return;
-
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight - 100) {
         el.classList.add("visible");
@@ -117,7 +190,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Activar al hacer scroll
   window.addEventListener("scroll", checkVisibility);
- 
 });
