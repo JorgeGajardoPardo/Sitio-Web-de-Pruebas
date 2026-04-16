@@ -534,6 +534,76 @@ section {
 .btn-enviar:hover {
   background: #388e3c;
 }
+#procesos {
+  position: relative;
+  padding: 4rem 1rem;
+  text-align: center;
+  background: url('IMG/arbol-reciclaje.svg') center/contain no-repeat; /* fondo ecológico */
+}
+
+#procesos h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #2e7d32;
+}
+
+.carousel-container {
+  position: relative;
+  perspective: 1000px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.carousel {
+  display: flex;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+}
+
+.carousel-item {
+  min-width: 250px;
+  margin: 0 1rem;
+  text-align: center;
+  transform: scale(0.9);
+  transition: transform 0.5s;
+}
+
+.carousel-item img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%; /* círculo uniforme */
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.3);
+}
+
+.carousel-item h3 {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #2e7d32;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(46,125,50,0.8);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.carousel-btn:hover {
+  background: rgba(46,125,50,1);
+}
+
+.carousel-btn.prev { left: -3rem; }
+.carousel-btn.next { right: -3rem; }
+
+
 
 
 /* Accesibilidad */
@@ -788,6 +858,12 @@ section {
   }
   
 }
+ .carousel-item img {
+    width: 150px;
+    height: 150px;
+  }
+  .carousel-btn.prev { left: -2rem; }
+  .carousel-btn.next { right: -2rem; }
 }
 
 
@@ -814,6 +890,12 @@ section {
   .contact-toggle {
     width: 100%;
   }
+   .carousel-item img {
+    width: 150px;
+    height: 150px;
+  }
+  .carousel-btn.prev { left: -2rem; }
+  .carousel-btn.next { right: -2rem; }
 }
 
 #reciclamos {
@@ -884,4 +966,101 @@ section {
   font-weight: bold;
   margin-top: 0.5rem;
   color: #c8e6c9;
+}
+#procesos {
+  position: relative;
+  padding: 2rem 1rem 7rem;
+  text-align: center;
+  background-color:#0ab112ee;
+}
+
+#procesos h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #f4f7f4;
+}
+
+.procesos-container {
+  position: relative;
+  width: 900px;
+  height: 400px;
+  margin: 0 auto;
+  perspective: 1200px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.procesos-carousel {
+  width: 2rem;
+  height: 2rem;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:#25d366;
+  border-radius: 50%;
+  padding: 1rem;
+}
+
+.procesos-item {
+  position: absolute;
+  transform-style: preserve-3d;
+  text-align: center;
+}
+
+.procesos-item img {
+  width: 20rem;
+  height: 20rem;
+  object-fit: cover;
+  border-radius: 1rem; 
+  box-shadow: 0 1rem 1rem 1rem rgba(0, 0, 0, 0.705);
+}
+
+.procesos-item h3 {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: whitesmoke;
+}
+
+.procesos-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(46,125,50,0.8);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  transition: background 0.3s;
+  z-index: 20;
+}
+
+.procesos-btn:hover {
+  background: rgba(46,125,50,1);
+}
+
+.procesos-btn.prev { left: 1rem; }
+.procesos-btn.next { right: 1rem; }
+
+/* Responsivo */
+@media (max-width: 768px) {
+  #procesos {
+    padding: 1.5rem 1rem 5rem;
+  }
+  .procesos-container {
+    width: 320px;
+    height: 260px;
+  }
+  .procesos-carousel {
+    padding: 0.5rem;
+    background: url('../IMG/arbol.jpg') center/cover no-repeat; /* versión móvil */
+  }
+  .procesos-item img {
+    width: 140px;
+    height: 140px;
+  }
 }

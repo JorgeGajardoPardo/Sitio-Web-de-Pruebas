@@ -20,35 +20,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* Carrusel ping-pong */
+  /* Carrusel ping-pong (galería) */
   const track = document.querySelector('.carousel-track');
   const items = document.querySelectorAll('.gallery-item');
   const prevBtn = document.querySelector('.carousel-btn.prev');
   const nextBtn = document.querySelector('.carousel-btn.next');
 
   let index = 0;
-  let direction = 1; // 1 = adelante, -1 = atrás
+  let direction = 1;
 
   function updateCarousel() {
     track.style.transition = "transform 0.8s ease-in-out";
     track.style.transform = `translateX(${-index * 100}%)`;
   }
 
-  prevBtn.addEventListener('click', () => {
-    if (index > 0) {
-      index--;
-      direction = -1;
-      updateCarousel();
-    }
-  });
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (index > 0) {
+        index--;
+        direction = -1;
+        updateCarousel();
+      }
+    });
 
-  nextBtn.addEventListener('click', () => {
-    if (index < items.length - 1) {
-      index++;
-      direction = 1;
-      updateCarousel();
-    }
-  });
+    nextBtn.addEventListener('click', () => {
+      if (index < items.length - 1) {
+        index++;
+        direction = 1;
+        updateCarousel();
+      }
+    });
+  }
 
   /* Autoplay ping-pong */
   let autoplay = setInterval(() => {
@@ -71,27 +73,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }, 3000);
 
   const carousel = document.querySelector('.carousel');
-  carousel.addEventListener('mouseenter', () => clearInterval(autoplay));
-  carousel.addEventListener('mouseleave', () => {
-    autoplay = setInterval(() => {
-      if (direction === 1) {
-        if (index < items.length - 1) {
-          index++;
+  if (carousel) {
+    carousel.addEventListener('mouseenter', () => clearInterval(autoplay));
+    carousel.addEventListener('mouseleave', () => {
+      autoplay = setInterval(() => {
+        if (direction === 1) {
+          if (index < items.length - 1) {
+            index++;
+          } else {
+            direction = -1;
+            index--;
+          }
         } else {
-          direction = -1;
-          index--;
+          if (index > 0) {
+            index--;
+          } else {
+            direction = 1;
+            index++;
+          }
         }
-      } else {
-        if (index > 0) {
-          index--;
-        } else {
-          direction = 1;
-          index++;
-        }
-      }
-      updateCarousel();
-    }, 3000);
-  });
+        updateCarousel();
+      }, 3000);
+    });
+  }
 
   /* Lightbox */
   const galleryImages = document.querySelectorAll('.gallery-item img');
@@ -115,21 +119,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  closeBtn.addEventListener('click', () => {
-    lightbox.classList.add('hidden');
-  });
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+    });
+  }
 
-  prevLightbox.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-    showImage();
-  });
+  if (prevLightbox && nextLightbox) {
+    prevLightbox.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      showImage();
+    });
 
-  nextLightbox.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % galleryImages.length;
-    showImage();
-  });
-
-  /* Tarjetas interactivas */
+    nextLightbox.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      showImage();
+    });
+  }
 
   /* Formulario de contacto */
   const contactToggle = document.querySelector(".contact-toggle");
@@ -191,4 +197,33 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("scroll", checkVisibility);
+
+  /* Procesos carrusel 3D mejorado */
+  const procesosCarousel = document.querySelector('.procesos-carousel');
+  const procesosItems = document.querySelectorAll('.procesos-item');
+  const procesosPrevBtn = document.querySelector('#procesos .prev');
+  const procesosNextBtn = document.querySelector('#procesos .next');
+
+  let angle = 0;
+  const step = 360 / procesosItems.length;
+  const radius = 350; // distancia al centro
+
+  // Posicionar cada item en círculo 3D
+  procesosItems.forEach((item, i) => {
+    const itemAngle = step * i;
+    item.style.transform = `rotateY(${itemAngle}deg) translateZ(${radius}px)`;
+  });
+
+  function rotateCarousel(direction) {
+    angle += step * direction;
+    procesosCarousel.style.transform = `translateZ(-${radius}px) rotateY(${angle}deg)`;
+  }
+
+  if (procesosPrevBtn && procesosNextBtn) {
+    procesosPrevBtn.addEventListener('click', () => rotateCarousel(1));
+    procesosNextBtn.addEventListener('click', () => rotateCarousel(-1));
+  }
+
+  // Autoplay opcional (cada 7 segundos)
+  setInterval(() => rotateCarousel(-1), 7000);
 });
