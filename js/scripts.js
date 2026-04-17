@@ -11,14 +11,49 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* Menú responsive */
-  const menuBtn = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
-  if (menuBtn && navLinks) {
-    menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-      menuBtn.classList.toggle('active');
+  const menuBtn = document.getElementById("menuToggle");
+  const navLinksContainer = document.getElementById("navLinks");
+  const navLinks = document.querySelectorAll("#navLinks li a");
+
+  if (menuBtn && navLinksContainer) {
+    // abrir/cerrar menú
+    menuBtn.addEventListener("click", () => {
+      menuBtn.classList.toggle("active");
+      navLinksContainer.classList.toggle("show");
+    });
+
+    // cerrar menú y scroll suave al hacer clic en enlace
+    navLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        const targetId = link.getAttribute("href");
+        if (targetId.startsWith("#")) {
+          e.preventDefault();
+          const target = document.querySelector(targetId);
+
+          // cerrar menú
+          menuBtn.classList.remove("active");
+          navLinksContainer.classList.remove("show");
+
+          // scroll suave hacia la sección
+          if (target) {
+            const navHeight = document.querySelector(".navbar").offsetHeight;
+            const y = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+        }
+      });
     });
   }
+
+  /* Navbar aparece al subir */
+  let lastScrollTop = 0;
+  const nav = document.querySelector(".navbar"); 
+  window.addEventListener("scroll", function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop < lastScrollTop) nav.style.top = "0";
+    else nav.style.top = "-100px";
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  });
 
   /* Carrusel ping-pong (galería) */
   const track = document.querySelector('.carousel-track');
@@ -36,38 +71,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (prevBtn && nextBtn) {
     prevBtn.addEventListener('click', () => {
-      if (index > 0) {
-        index--;
-        direction = -1;
-        updateCarousel();
-      }
+      if (index > 0) { index--; direction = -1; updateCarousel(); }
     });
-
     nextBtn.addEventListener('click', () => {
-      if (index < items.length - 1) {
-        index++;
-        direction = 1;
-        updateCarousel();
-      }
+      if (index < items.length - 1) { index++; direction = 1; updateCarousel(); }
     });
   }
 
-  /* Autoplay ping-pong */
   let autoplay = setInterval(() => {
     if (direction === 1) {
-      if (index < items.length - 1) {
-        index++;
-      } else {
-        direction = -1;
-        index--;
-      }
+      if (index < items.length - 1) index++; else { direction = -1; index--; }
     } else {
-      if (index > 0) {
-        index--;
-      } else {
-        direction = 1;
-        index++;
-      }
+      if (index > 0) index--; else { direction = 1; index++; }
     }
     updateCarousel();
   }, 3000);
@@ -78,19 +93,9 @@ document.addEventListener("DOMContentLoaded", () => {
     carousel.addEventListener('mouseleave', () => {
       autoplay = setInterval(() => {
         if (direction === 1) {
-          if (index < items.length - 1) {
-            index++;
-          } else {
-            direction = -1;
-            index--;
-          }
+          if (index < items.length - 1) index++; else { direction = -1; index--; }
         } else {
-          if (index > 0) {
-            index--;
-          } else {
-            direction = 1;
-            index++;
-          }
+          if (index > 0) index--; else { direction = 1; index++; }
         }
         updateCarousel();
       }, 3000);
@@ -119,18 +124,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      lightbox.classList.add('hidden');
-    });
-  }
-
+  if (closeBtn) closeBtn.addEventListener('click', () => lightbox.classList.add('hidden'));
   if (prevLightbox && nextLightbox) {
     prevLightbox.addEventListener('click', () => {
       currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
       showImage();
     });
-
     nextLightbox.addEventListener('click', () => {
       currentIndex = (currentIndex + 1) % galleryImages.length;
       showImage();
@@ -173,32 +172,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* Animaciones fade-in */
   const fadeElements = document.querySelectorAll(".fade-in");
-  const sobreTitulo = document.querySelector("#sobre-nosotros h2");
-  const sobreParrafos = document.querySelectorAll("#sobre-nosotros p");
-
-  if (sobreTitulo) {
-    sobreTitulo.classList.add("visible");
-  }
-
-  if (sobreParrafos.length > 0) {
-    setTimeout(() => {
-      sobreParrafos[0].classList.add("visible");
-    }, 2500);
-  }
-
   function checkVisibility() {
     fadeElements.forEach(el => {
-      if (el === sobreTitulo || el === sobreParrafos[0]) return;
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) {
-        el.classList.add("visible");
-      }
+      if (rect.top < window.innerHeight - 100) el.classList.add("visible");
     });
   }
-
   window.addEventListener("scroll", checkVisibility);
+  checkVisibility();
 
-  /* Procesos carrusel 3D mejorado */
+  /* Procesos carrusel 3D */
   const procesosCarousel = document.querySelector('.procesos-carousel');
   const procesosItems = document.querySelectorAll('.procesos-item');
   const procesosPrevBtn = document.querySelector('#procesos .prev');
@@ -206,9 +189,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let angle = 0;
   const step = 360 / procesosItems.length;
-  const radius = 350; // distancia al centro
+  const radius = 350;
 
-  // Posicionar cada item en círculo 3D
   procesosItems.forEach((item, i) => {
     const itemAngle = step * i;
     item.style.transform = `rotateY(${itemAngle}deg) translateZ(${radius}px)`;
@@ -224,6 +206,5 @@ document.addEventListener("DOMContentLoaded", () => {
     procesosNextBtn.addEventListener('click', () => rotateCarousel(-1));
   }
 
-  // Autoplay opcional (cada 7 segundos)
   setInterval(() => rotateCarousel(-1), 7000);
 });
