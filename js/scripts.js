@@ -16,25 +16,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll("#navLinks li a");
 
   if (menuBtn && navLinksContainer) {
-    // abrir/cerrar menú
     menuBtn.addEventListener("click", () => {
       menuBtn.classList.toggle("active");
       navLinksContainer.classList.toggle("show");
     });
 
-    // cerrar menú y scroll suave al hacer clic en enlace
     navLinks.forEach(link => {
       link.addEventListener("click", (e) => {
         const targetId = link.getAttribute("href");
         if (targetId.startsWith("#")) {
           e.preventDefault();
           const target = document.querySelector(targetId);
-
-          // cerrar menú
           menuBtn.classList.remove("active");
           navLinksContainer.classList.remove("show");
-
-          // scroll suave hacia la sección
           if (target) {
             const navHeight = document.querySelector(".navbar").offsetHeight;
             const y = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
@@ -170,16 +164,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* Animaciones fade-in */
+  /* Animaciones fade-in al hacer scroll */
   const fadeElements = document.querySelectorAll(".fade-in");
+  const sobreTitulo = document.querySelector("#sobre-nosotros h2");
+  const sobreParrafos = document.querySelectorAll("#sobre-nosotros p");
+
+  if (sobreTitulo) {
+    sobreTitulo.classList.add("visible");
+  }
+
+  if (sobreParrafos.length > 0) {
+    setTimeout(() => {
+      sobreParrafos[0].classList.add("visible");
+    }, 2500);
+  }
+
   function checkVisibility() {
+    let delay = 0;
     fadeElements.forEach(el => {
+      if (el === sobreTitulo || el === sobreParrafos[0]) return;
       const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) el.classList.add("visible");
+      const inView = rect.top < window.innerHeight - 100 && rect.bottom > 0;
+      if (inView && !el.classList.contains("visible")) {
+        setTimeout(() => {
+          el.classList.add("visible");
+        }, delay);
+        delay += 200; // escalonado: cada elemento aparece con 200ms de diferencia
+      }
     });
   }
+
   window.addEventListener("scroll", checkVisibility);
-  checkVisibility();
 
   /* Procesos carrusel 3D */
   const procesosCarousel = document.querySelector('.procesos-carousel');
