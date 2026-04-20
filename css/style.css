@@ -32,24 +32,24 @@ body {
 }
 
 .navbar {
-  position: fixed; /* antes estaba relative */
+  position: fixed; 
   top: 0;
   left: 0;
   width:100%;
   background: #2e7d32;
   color: white;
-  padding: 1rem;
+  padding: 0.4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 10; /* encima de todo */
-  transition: top 0.4s ease; /* animación suave */
-  box-sizing: border-box; /* asegura que padding no recorte contenido */
+  z-index: 10; 
+  transition: top 0.4s ease; 
+  box-sizing: border-box; 
 }
 
 
 .logo img {
-  height: 3.125rem;
+  height: 3rem;
   width: auto;
   position: relative;
   z-index: 30;
@@ -67,24 +67,24 @@ body {
   color: white;
   text-decoration: none;
   position: relative;
-  transition: color 0.3s ease; /* transición suave en color */
+  transition: color 0.3s ease;
 }
 
 .nav-links li a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -4px; /* espacio debajo del texto */
+  bottom: -4px; 
   width: 100%;
   height: 2px;
-  background: #ffeb3b; /* color del subrayado (amarillo vibrante) */
+  background: #ffeb3b; 
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.3s ease;
 }
 
 .nav-links li a:hover {
-  color: #ffeb3b; /* cambia el color del texto al pasar el mouse */
+  color: #ffeb3b; 
 }
 
 .nav-links li a:hover::after {
@@ -95,7 +95,7 @@ body {
 
 .wave {
   position: absolute;
-  bottom: -0.0625rem; 
+  bottom: 0.5rem; 
   left: 0;
   width: 100%;
   z-index: 5;
@@ -146,7 +146,7 @@ body {
 }
 
 .header {
-  background: url('../IMG/Copilot_20260323_084437.png') center/cover no-repeat;
+  background: url('../IMG/Header.png') center/cover no-repeat;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -160,11 +160,12 @@ body {
 }
 
 .header h1 {
+  padding-top: 2rem;
   font-size: 3rem;
   overflow: hidden;
   font-weight: 100;
   white-space: nowrap;
-  margin: 0 auto;
+  margin:0 auto;
   letter-spacing: .05em;
   animation: typing 3s steps(30,end), blink-caret .75s step-end infinite;
 }
@@ -202,12 +203,16 @@ body {
   transform: scale(1.1);
 }
 .fade-in {
-  opacity:0; transform:translateY(30px);
-  transition:opacity 1s ease, transform 1s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
 }
+
 .fade-in.visible {
-  opacity:1; transform:translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
+
 
 section {
   padding: 5rem 1.25rem;
@@ -524,7 +529,7 @@ section {
   position: relative;
   padding: 4rem 1rem;
   text-align: center;
-  background: url('IMG/arbol-reciclaje.svg') center/contain no-repeat; /* fondo ecológico */
+
 }
 
 #procesos h2 {
@@ -634,7 +639,7 @@ section {
 
 /* Header */
 .dark-mode .header {
-  background: url('../IMG/Copilot_20260323_084437.png') center/cover no-repeat;
+  background: url('../IMG/Header.png') center/cover no-repeat;
   filter: brightness(0.6); 
 }
 .dark-mode .header .overlay {
@@ -735,7 +740,7 @@ section {
 /* Mobile */
 @media (max-width: 48rem) { /* 768px */
   header {
-    background: url("../IMG/Mobile.png") no-repeat;
+    background: url("../IMG/HeaderMobile.png") no-repeat;
     background-size: contain;  
     height: auto;  
     max-width: 48rem;            
