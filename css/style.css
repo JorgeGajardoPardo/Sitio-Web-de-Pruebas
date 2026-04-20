@@ -366,7 +366,6 @@ section {
   filter: brightness(1.1) saturate(1.2);
 }
 
-/* Botones carrusel */
 .carousel-btn {
   position: absolute;
   top: 50%;
@@ -390,17 +389,17 @@ section {
 
 
 #mapa {
-  padding: 3.75rem 1.25rem; /* 60px 20px */
+  padding: 3.75rem 1.25rem;
   text-align: center;
 }
 .map-container {
   position: relative;
   width: 100%;
-  padding-bottom: 56.25%; /* relación 16:9 */
+  padding-bottom: 56.25%; 
   height: 0;
   overflow: hidden;
-  border-radius: 0.625rem; /* 10px */
-  box-shadow: 0 0.25rem 0.625rem rgba(0,0,0,0.1); /* 4px 10px */
+  border-radius: 0.625rem; 
+  box-shadow: 0 0.25rem 0.625rem rgba(0,0,0,0.1);
 }
 .map-container iframe {
   position: absolute;
@@ -409,9 +408,8 @@ section {
   border: 0;
 }
 
-/* Footer */
 #footer {
-  background: linear-gradient(135deg, #2e7d32, #388e3c); /* degradado verde */
+  background: linear-gradient(135deg, #2e7d32, #388e3c);
   color: #fff;
   padding: 2.5rem 1rem;
   text-align: center;
@@ -451,19 +449,16 @@ section {
   color: #a5d6a7;
 }
 
-/* Hover efecto */
 .footer-section h3:hover {
-  color: #fff;
+  color: #ffeb3b;
   transition: color 0.3s ease;
 }
 
-/* Sección contacto */
 #contacto {
   padding: 3rem 1rem;
   text-align: center;
 }
 
-/* Botón estilo sobre */
 .contact-toggle {
   background: #2e7d32;
   color: #fff;
@@ -478,7 +473,6 @@ section {
   background: #388e3c;
 }
 
-/* Formulario oculto */
 .contact-form {
   display: none;
   margin-top: 2rem;
@@ -563,7 +557,7 @@ section {
   width: 200px;
   height: 200px;
   object-fit: cover;
-  border-radius: 50%; /* círculo uniforme */
+  border-radius: 50%;
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.3);
 }
 
@@ -594,10 +588,6 @@ section {
 .carousel-btn.prev { left: -3rem; }
 .carousel-btn.next { right: -3rem; }
 
-
-
-
-/* Accesibilidad */
 .accessibility {
   position: fixed;
   bottom: 0.625rem;
@@ -622,13 +612,11 @@ section {
   background: #388e3c;
 }
 
-/* Tema oscuro global */
 .dark-mode {
   background: #121212;
   color: #e0e0e0;
 }
 
-/* Navbar */
 .dark-mode .navbar {
   background: #1e1e1e;
   color: #e0e0e0;
@@ -637,17 +625,15 @@ section {
   color: #c8e6c9;
 }
 
-/* Header */
 .dark-mode .header {
   background: url('../IMG/Header.png') center/cover no-repeat;
   filter: brightness(0.6); 
 }
 .dark-mode .header .overlay {
-  background: rgba(0,0,0,0.6);
+ 
   color: #e0e0e0;
 }
 
-/* Sobre nosotros */
 .dark-mode #sobre-nosotros {
   background: #1e1e1e;
   color: #e0e0e0;
@@ -656,7 +642,6 @@ section {
   color: #81c784;
 }
 
-/* Reciclamos */
 .dark-mode #reciclamos {
   background: #1e1e1e;
   color: #e0e0e0;
@@ -665,7 +650,6 @@ section {
   color: #81c784;
 }
 
-/* Cards */
 .dark-mode .card-front {
   background: #1e1e1e;
 }
@@ -677,7 +661,6 @@ section {
   color: #e0e0e0;
 }
 
-/* Galería */
 .dark-mode #galeria {
   background: #1e1e1e;
 }
@@ -688,7 +671,6 @@ section {
   box-shadow: 0 0.5rem 1rem rgba(255,255,255,0.1);
 }
 
-/* Mapa */
 .dark-mode #mapa {
   background: #1e1e1e;
   color: #e0e0e0;
@@ -697,7 +679,6 @@ section {
   box-shadow: 0 0.25rem 0.625rem rgba(255,255,255,0.1);
 }
 
-/* Footer */
 .dark-mode #footer {
   background: #1e1e1e;
   color: #e0e0e0;
@@ -710,7 +691,6 @@ section {
   color: #c8e6c9;
 }
 
-/* Formulario de contacto */
 .dark-mode .contact-form {
   background: #1e1e1e;
   color: #e0e0e0;
@@ -728,17 +708,26 @@ section {
   background: #81c784;
 }
 
-/* Botones accesibilidad en modo oscuro */
 .dark-mode .accessibility button {
   background: #333;
   color: #e0e0e0;
   border: 1px solid #555;
 }
 
+.dark-mode #mision-vision{
+   background: #333;
+  color: #e0e0e0;
+  border: 1px solid #555;
+}
 
+.dark-mode .card-inner .dark-mode{
+   background: #1e1e1e;
+   box-shadow: 0 0.5rem 1rem rgba(255,255,255,0.1);
+    filter: brightness(0.6);
+}
 
-/* Mobile */
-@media (max-width: 48rem) { /* 768px */
+/* Responsivo Pantallas pequeñas */
+@media (max-width: 48rem) {
   header {
     background: url("../IMG/HeaderMobile.png") no-repeat;
     background-size: contain;  
@@ -746,12 +735,10 @@ section {
     max-width: 48rem;            
     max-height:21rem;
   }
-
   .header h1 {
     font-size: 1.4rem;
     font-weight: bold;
   }
-  
   h1 { font-size: 1.8rem; }
   h2 { font-size: 1.4rem; }
   h3 { font-size: 1.2rem; }
@@ -759,7 +746,6 @@ section {
   .menu-btn {
     display: flex;
   }
-
   .nav-links {
     position: fixed;
     top: 0;
@@ -856,12 +842,8 @@ section {
   }
   .carousel-btn.prev { left: -2rem; }
   .carousel-btn.next { right: -2rem; }
-}
 
 
-
-/* Responsive */
-@media (max-width: 48rem) { /* 768px */
   .footer-container {
     flex-direction: column;
     align-items: center;
@@ -938,7 +920,7 @@ section {
   left: 0;
   width: 100%;
   padding: 1rem;
-  background: rgba(46,125,50,0.85); /* verde con transparencia */
+  background: rgba(46,125,50,0.85);
   color: #fff;
   transform: translateY(100%);
   transition: transform 0.4s ease;
@@ -963,7 +945,7 @@ section {
   position: relative;
   padding: 2rem 1rem 7rem;
   text-align: center;
-  background-color:#0ab112ee;
+  background: linear-gradient(135deg, #0ab112ee, #1c7430);
 }
 
 #procesos h2 {
@@ -974,8 +956,8 @@ section {
 
 .procesos-container {
   position: relative;
-  width: 900px;
-  height: 400px;
+  width: 1000px;
+  height: 500px;
   margin: 0 auto;
   perspective: 1200px; 
   display: flex;
@@ -1003,8 +985,8 @@ section {
 }
 
 .procesos-item img {
-  width: 20rem;
-  height: 20rem;
+  width: 24rem;
+  height: 24rem;
   object-fit: cover;
   border-radius: 1rem; 
   box-shadow: 0 1rem 1rem 1rem rgba(0, 0, 0, 0.705);
@@ -1038,10 +1020,17 @@ section {
 .procesos-btn.prev { left: 1rem; }
 .procesos-btn.next { right: 1rem; }
 
+.dark-mode #procesos {
+background:#1e1e1e;
+   box-shadow: 0 0.5rem 1rem rgba(255,255,255,0.1);
+    filter: brightness(0.6);
+    
+}
+
 @media (max-width: 768px) {
   #procesos {
     padding: 1.5rem 1rem 5rem;
-    overflow-x: hidden; /* evita scroll horizontal */
+    overflow-x: hidden;
   }
 
   .procesos-container {
@@ -1049,7 +1038,7 @@ section {
     max-width: 320px;
     height: 260px;
     margin: 0 auto;
-    perspective: 800px; /* menos profundidad en móviles */
+    perspective: 800px;
     overflow: hidden;
   }
 
@@ -1062,7 +1051,7 @@ section {
     justify-content: center;
     transform-style: preserve-3d;
     transition: transform 1s ease;
-    overflow: visible; /* permite que las imágenes roten sin cortarse */
+    overflow: visible; 
   }
 
   .procesos-item img {
