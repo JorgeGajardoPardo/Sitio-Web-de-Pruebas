@@ -4,11 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reciclajes Tudela</title>
+  <meta name="description" content="Somos Reciclajes Tudela & Ripe Chile, Empresa dedicada al reciclajes en San Fernando Chile, Compramos y recepcionamos diferentes tipos de materiales reciclables: cartón, papel, metales, vidrio, plásticos, latas y baterías. Servicio confiable y responsable en la región.">
+  <meta name="keywords" content="reciclaje,tudela, cartón, papel, metales, vidrio, plásticos, latas, baterías, economía circular, sustentabilidad, san fernando">
+  <meta name="author" content="Reciclajes Tudela & Ripe Chile">
+  <meta property="og:title" content="Reciclajes Tudela & Ripe Chile">
+  <meta property="og:description" content="Transformamos residuos en recursos. Compra de materiales reciclables con precios justos y manejo responsable.">
+  <meta property="og:image" content="URL-de-tu-imagen-og.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.reciclajestudela.cl">
+  <link rel="icon" href="IMG/logo-removebg-preview.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-     <!-- Loader -->
+  <!--Loader , Header y Nav-->
   <div id="loader">
     <i class="fas fa-recycle loader-icon spin"></i>
   </div>
@@ -17,281 +26,246 @@
       <div class="logo">
         <img src="IMG/logo-removebg-preview.png" alt="Logo Reciclajes Tudela">
       </div>
+      <button class="menu-btn" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#sobre-nosotros">Inicio</a></li>
+        <li><a href="#sobre-nosotros">Acerca de</a></li>
+        <li><a href="#reciclamos">Compramos</a></li>
+        <li><a href="#mapa">Ubicación</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <svg class="wave" viewBox="0 0 1440 100">
+        <path d="M0,50 C480,150 960,-50 1440,50 L1440,00 L0,0 Z" fill="#4CAF50" opacity="0.7"></path>
+        <path d="M0,60 C480,130 960,-70 1440,60 L1440,00 L0,0 Z" fill="#388E3C" opacity="0.5"></path>
+      </svg>
+    </nav>
+    
+    <header class="header">
+      <div class="overlay">
+      <br><br>
+      <h1>Construimos sostenibilidad <i class="fas fa-seedling"></i> </h1>
+      </div>
+    </header>
 
-  <!-- Botón hamburguesa -->
-   <button class="menu-btn" id="menuToggle">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
-  <!-- Menú mobile -->
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#sobre-nosotros">Inicio</a></li>
-    <li><a href="#sobre-nosotros">Acerca de</a></li>
-    <li><a href="#reciclamos">Compramos</a></li>
-    <li><a href="#mapa">Ubicación</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-
-  <!-- Olas decorativas -->
-  <svg class="wave" viewBox="0 0 1440 100">
-    <path d="M0,50 C480,150 960,-50 1440,50 L1440,00 L0,0 Z" fill="#4CAF50" opacity="0.7"></path>
-    <path d="M0,60 C480,130 960,-70 1440,60 L1440,00 L0,0 Z" fill="#388E3C" opacity="0.5"></path>
-  </svg>
-</nav>
-
-<!-- Header -->
-<header class="header">
-  <div class="overlay">
-    <br><br>
-    <h1>Construimos sostenibilidad <i class="fas fa-seedling"></i> </h1>
-  </div>
-</header>
-  <!-- Sobre Nosotros -->
-<section id="sobre-nosotros">
-  <h2 class=""><i class="fas fa-leaf"></i> Sobre Nosotros</h2>
-  <p class="fade-in">
-    Reciclajes Tudela y Ripe Chile empresas con una trayectoria de más de 20 años en el rubro del reciclaje, 
-    fundadas por Don Pedro Tudela Ramírez. 
-    <br>
-    Desde nuestros inicios hemos trabajado con compromiso 
-    y responsabilidad, consolidándonos como un referente en la Sexta y Séptima Región en la gestión de residuos.
-  </p>
-  <p class="fade-in">
-    Colaboramos estrechamente con empresas líderes a nivel nacional, cadenas de supermercados, 
-    packings agrícolas y particulares en comunas como San Fernando, Rengo, Las Cabras, San Vicente, 
-    Santa Cruz, Pichilemu, Chimbarongo y Curicó. Nuestro objetivo es ofrecer soluciones eficientes y sostenibles 
-    que contribuyan al cuidado del medio ambiente y al desarrollo de la economía circular.
-  </p>
-  <p class="fade-in">
-    Cada mes reciclamos aproximadamente <strong>300 toneladas de cartón</strong>, lo que equivale a salvar cerca de 
-    <strong id="arboles">6000 árboles adultos.</strong>  Además, gestionamos el reciclaje de otros materiales.
-    Estos esfuerzos permiten reducir la contaminación, fomentar la reutilización de estos 
-    y evitar la tala indiscriminada de bosques.
-  </p>
-</section>
-
-<section id="mision-vision">
-  <div class="mv-container">
-    <div class="mv-card">
-      <h3 class="fade-in">Misión</h3>
+    <!--Secciones-->
+    <section id="sobre-nosotros">
+      <h2 class=""><i class="fas fa-leaf"></i> Sobre Nosotros</h2>
       <p class="fade-in">
-        Brindar soluciones de reciclaje eficientes y confiables, asegurando el cumplimiento normativo 
-        y la optimización de procesos para nuestros clientes. Nos enfocamos en ofrecer un servicio 
-        profesional que genere valor y confianza en cada etapa de la gestión.
+        Reciclajes Tudela y Ripe Chile empresas con una trayectoria de más de 20 años en el rubro del reciclaje, 
+        fundadas por Don Pedro Tudela Ramírez. 
+      <br>
+        Desde nuestros inicios hemos trabajado con compromiso 
+        y responsabilidad, consolidándonos como un referente en la Sexta y Séptima Región en la gestión de residuos.
       </p>
-    </div>
-    <div class="mv-card">
-      <h3 class="fade-in">Visión</h3>
       <p class="fade-in">
-        Consolidarnos como la empresa líder en la región en servicios de reciclaje industrial, 
-        reconocida por la excelencia operativa, la innovación en procesos y la capacidad de 
-        adaptarnos a las necesidades de un mercado en constante evolución.
+        Colaboramos estrechamente con empresas líderes a nivel nacional, cadenas de supermercados, 
+        packings agrícolas y particulares en comunas como San Fernando, Rengo, Las Cabras, San Vicente, 
+        Santa Cruz, Pichilemu, Chimbarongo y Curicó. Nuestro objetivo es ofrecer soluciones eficientes y sostenibles 
+        que contribuyan al cuidado del medio ambiente y al desarrollo de la economía circular.
       </p>
-    </div>
+      <p class="fade-in">
+        Cada mes reciclamos aproximadamente <strong>300 toneladas de cartón</strong>, lo que equivale a salvar cerca de 
+        <strong id="arboles">6000 árboles adultos.</strong>  Además, gestionamos el reciclaje de otros materiales.
+        Estos esfuerzos permiten reducir la contaminación, fomentar la reutilización de estos 
+        y evitar la tala indiscriminada de bosques.
+      </p>
+    </section>
+    <section id="mision-vision">
+      <div class="mv-container">
+        <div class="mv-card">
+          <h3 class="fade-in">Misión</h3>
+            <p class="fade-in">
+              Brindar soluciones de reciclaje eficientes y confiables, asegurando el cumplimiento normativo 
+              y la optimización de procesos para nuestros clientes. Nos enfocamos en ofrecer un servicio 
+              profesional que genere valor y confianza en cada etapa de la gestión.
+            </p>
+        </div>
+        <div class="mv-card">
+          <h3 class="fade-in">Visión</h3>
+            <p class="fade-in">
+              Consolidarnos como la empresa líder en la región en servicios de reciclaje industrial, 
+              reconocida por la excelencia operativa, la innovación en procesos y la capacidad de 
+              adaptarnos a las necesidades de un mercado en constante evolución.
+            </p>
+        </div>
+      </div>
+    </section>
+    <section id="reciclamos">
+      <h2 class="fade-in"><i class="fas fa-recycle"></i> Compramos y Reciclamos</h2>
+      <p>Estos son los materiales que compramos y recibimos , si necesitas mas información <a href="#contacto">contáctanos</a></p>
+      <div class="cards">
+        <div class="card">
+          <div class="card-inner">
+            <img src="IMG/carton.jpg" alt="Cartón">
+              <div class="card-info">
+                <h3>Cartón</h3>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <img src="IMG/fierro.jpg" alt="Fierro y Chatarra">
+              <div class="card-info">
+                <h3>Fierro y Chatarra</h3>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <img src="IMG/vidrio.jpg" alt="Vidrio">
+              <div class="card-info">
+                <h3>Vidrio</h3>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <img src="IMG/papel.jpg" alt="Papel Blanco">
+              <div class="card-info">
+                <h3>Papel Blanco</h3>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <img src="IMG/bateria.png" alt="Baterías">
+              <div class="card-info">
+                <h3>Baterías</h3>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <img src="IMG/latas.jpg" alt="Latas de Aluminio">
+              <div class="card-info">
+                <h3>Latas de Aluminio</h3>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <img src="IMG/botellas.jpg" alt="Botellas PET">
+              <div class="card-info">
+                <h3>Botellas PET</h3>
+              </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-inner">
+            <img src="IMG/1000097372.jpg" alt="Plástico Nylon">
+              <div class="card-info">
+                <h3>Plástico Nylon</h3>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="procesos">
+      <h2 class="fade-in"><i class="fas fa-cogs"></i> Proceso de Enfardado</h2>
+      <div class="procesos-container">
+        <button class="procesos-btn prev">&#10094;</button>
+        <div class="procesos-carousel">
+          <div class="procesos-item">
+            <img src="IMG/recepcion-material.jpg" alt="Recepción de material">
+            <h3>Recepción de Material</h3>
+          </div>
+          <div class="procesos-item">
+            <img src="IMG/descarga-material.jpg" alt="Descarga de material">
+            <h3>Descarga de Material</h3>
+          </div>
+          <div class="procesos-item">
+            <img src="IMG/alimentacion-cinta.jpg" alt="Proceso de alimentación">
+              <h3>Alimentación de cinta transportadora</h3>
+          </div>
+          <div class="procesos-item">
+            <img src="IMG/transporte-cinta-material.jpg" alt="Transporte de material en cinta">
+            <h3>Transporte de material a enfardadora</h3>
+          </div>
+          <div class="procesos-item">
+            <img src="IMG/material-procesado.jpg" alt="Salida de material procesado">
+            <h3>Salida Material Procesado</h3>
+          </div>
+          <div class="procesos-item">
+            <img src="IMG/acopio-material.jpg" alt="Acopio de material">
+            <h3>Acopio de Material</h3>
+          </div>
+        </div>
+        <button class="procesos-btn next">&#10095;</button>
+      </div>
+    </section>
+    <section id="mapa">
+      <h2 class="fade-in">Ubicación</h2>
+        <div class="map-container">
+          <iframe 
+          src="https://www.google.com/maps?q=Cam.+a+Roma+1620,+San+Fernando,+Chile&output=embed"
+          allowfullscreen=""
+          loading="lazy">
+          </iframe>
+        </div>
+    </section>
+    <section id="contacto">
+      <div class="contact-wrapper">
+        <button class="contact-toggle">✉️ Contáctanos</button>
+          <form class="contact-form" id="formulario-contacto" action="enviar.php" method="POST">
+            <h2>Formulario de Contacto</h2>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="asunto">Asunto</label>
+            <input type="text" id="asunto" name="asunto" required>
+            <label for="correo">Correo</label>
+            <input type="email" id="correo" name="correo" required>
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            
+            <!-- reCAPTCHA dentro del formulario -->
+             <div class="g-recaptcha" data-sitekey="TU_SITE_KEY"></div>
+             <button type="submit" class="btn-enviar">Enviar</button>
+          </form>
+      </div>
+    </section>
+    <!-- reCAPTCHA -->
+     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <!--WhatsApp-->
+     <a href="https://wa.me/56988274341" class="whatsapp-float" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <!-- Accesibilidad -->
+     <div class="accessibility">
+      <button id="increaseFont">A+</button>
+      <button id="decreaseFont">A-</button>
+      <button id="toggleTheme">🌙/☀️</button>
+     </div>
+     <footer id="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>⏰ Horario de Atención</h3>
+          <p>Lunes a Viernes: 8:30 hrs a 18:30 hrs continuado</p>
+          <p>Sábados, Domingos y Festivos Cerrado</p>
+        </div>
+        <div class="footer-section">
+          <h3>📞 Contacto</h3>
+          <p >
+            <a style="color:whitesmoke;" href="mailto:reciclajestudela@gmail.com">
+              Correo:reciclajestudela@gmail.com
+            </a>
+          </p>
+          <p>Teléfono: +56 988 274 341</p>
+        </div>
+        <div class="footer-section">
+          <h3>♻️ Reciclajes Tudela</h3>
+          <p>© Todos los derechos reservados</p>
+          <p class="powered">Powered by <strong>
+            <a href="mailto:primarykeydev@gmail.com" style="color:whitesmoke;">
+              JG Freelance </a></strong>
+          </p>
+        </div>
+      </div>
+    </footer>
   </div>
-</section>
-
-<section id="reciclamos">
-  <h2 class="fade-in"><i class="fas fa-recycle"></i> Compramos y Reciclamos</h2>
-  <p>Estos son los materiales que compramos y recibimos , si necesitas mas información <a href="#contacto">contáctanos</a></p>
-  <div class="cards">
-    <!-- Cartón -->
-    <div class="card">
-      <div class="card-inner">
-        <img src="IMG/carton.jpg" alt="Cartón">
-        <div class="card-info">
-          <h3>Cartón</h3>
-        </div>
-      </div>
-    </div>
-
-    <!-- Fierro y Chatarra -->
-    <div class="card">
-      <div class="card-inner">
-        <img src="IMG/fierro.jpg" alt="Fierro y Chatarra">
-        <div class="card-info">
-          <h3>Fierro y Chatarra</h3>
-        </div>
-      </div>
-    </div>
-
-    <!-- Vidrio -->
-    <div class="card">
-      <div class="card-inner">
-        <img src="IMG/vidrio.jpg" alt="Vidrio">
-        <div class="card-info">
-          <h3>Vidrio</h3>
-        </div>
-      </div>
-    </div>
-
-    <!-- Papel Blanco -->
-    <div class="card">
-      <div class="card-inner">
-        <img src="IMG/papel.jpg" alt="Papel Blanco">
-        <div class="card-info">
-          <h3>Papel Blanco</h3>
-        </div>
-      </div>
-    </div>
-
-    <!-- Baterías -->
-    <div class="card">
-      <div class="card-inner">
-        <img src="IMG/bateria.png" alt="Baterías">
-        <div class="card-info">
-          <h3>Baterías</h3>
-        </div>
-      </div>
-    </div>
-
-    <!-- Latas de Aluminio -->
-    <div class="card">
-      <div class="card-inner">
-        <img src="IMG/latas.jpg" alt="Latas de Aluminio">
-        <div class="card-info">
-          <h3>Latas de Aluminio</h3>
-        </div>
-      </div>
-    </div>
-
-    <!-- Botellas PET -->
-    <div class="card">
-      <div class="card-inner">
-        <img src="IMG/botellas.jpg" alt="Botellas PET">
-        <div class="card-info">
-          <h3>Botellas PET</h3>
-        </div>
-      </div>
-    </div>
-
-    <!-- Plástico Nylon -->
-    <div class="card">
-      <div class="card-inner">
-        <img src="IMG/1000097372.jpg" alt="Plástico Nylon">
-        <div class="card-info">
-          <h3>Plástico Nylon</h3>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="procesos">
-  <h2 class="fade-in"><i class="fas fa-cogs"></i> Proceso de Enfardado</h2>
-
-  <div class="procesos-container">
-    <!-- Botón flecha izquierda -->
-    <button class="procesos-btn prev">&#10094;</button>
-
-    <!-- Carrusel 3D -->
-    <div class="procesos-carousel">
-      <div class="procesos-item">
-        <img src="IMG/recepcion-material.jpg" alt="Recepción de material">
-        <h3>Recepción de Material</h3>
-      </div>
-      <div class="procesos-item">
-        <img src="IMG/descarga-material.jpg" alt="Descarga de material">
-        <h3>Descarga de Material</h3>
-      </div>
-      <div class="procesos-item">
-        <img src="IMG/alimentacion-cinta.jpg" alt="Proceso de alimentación">
-        <h3>Alimentación de cinta transportadora</h3>
-      </div>
-      <div class="procesos-item">
-        <img src="IMG/transporte-cinta-material.jpg" alt="Transporte de material en cinta">
-        <h3>Transporte de material a enfardadora</h3>
-      </div>
-      <div class="procesos-item">
-        <img src="IMG/material-procesado.jpg" alt="Salida de material procesado">
-        <h3>Salida Material Procesado</h3>
-      </div>
-        <div class="procesos-item">
-        <img src="IMG/acopio-material.jpg" alt="Acopio de material">
-        <h3>Acopio de Material</h3>
-      </div>
-    </div>
-
-    <!-- Botón flecha derecha -->
-    <button class="procesos-btn next">&#10095;</button>
-  </div>
-</section>
-
-<section id="mapa">
-  <h2 class="fade-in">Ubicación</h2>
-  <div class="map-container">
-    <iframe 
-      src="https://www.google.com/maps?q=Cam.+a+Roma+1620,+San+Fernando,+Chile&output=embed"
-      allowfullscreen=""
-      loading="lazy">
-    </iframe>
-  </div>
-</section>
-
-<section id="contacto">
-  <div class="contact-wrapper">
-    <button class="contact-toggle">✉️ Contáctanos</button>
-    <form class="contact-form" id="formulario-contacto" action="enviar.php" method="POST">
-      <h2>Formulario de Contacto</h2>
-
-      <label for="nombre">Nombre</label>
-      <input type="text" id="nombre" name="nombre" required>
-
-      <label for="asunto">Asunto</label>
-      <input type="text" id="asunto" name="asunto" required>
-
-      <label for="correo">Correo</label>
-      <input type="email" id="correo" name="correo" required>
-
-      <label for="mensaje">Mensaje</label>
-      <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-
-      <!-- reCAPTCHA dentro del formulario -->
-      <div class="g-recaptcha" data-sitekey="TU_SITE_KEY"></div>
-
-      <button type="submit" class="btn-enviar">Enviar</button>
-    </form>
-  </div>
-</section>
-
-<!-- reCAPTCHA -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-<!--WhatsApp-->
-<a href="https://wa.me/56988274341" class="whatsapp-float" target="_blank">
-  <i class="fab fa-whatsapp"></i>
-</a>
-<!-- Accesibilidad -->
-<div class="accessibility">
-  <button id="increaseFont">A+</button>
-  <button id="decreaseFont">A-</button>
-  <button id="toggleTheme">🌙/☀️</button>
-</div>
-
-<footer id="footer">
-  <div class="footer-container">
-    <div class="footer-section">
-      <h3>⏰ Horario de Atención</h3>
-      <p>Lunes a Viernes: 8:30 hrs a 18:30 hrs continuado</p>
-      <p>Sábados, Domingos y Festivos Cerrado</p>
-    </div>
-
-    <div class="footer-section">
-      <h3>📞 Contacto</h3>
-      <p ><a style="color:whitesmoke;" href="mailto:reciclajestudela@gmail.com">Correo:reciclajestudela@gmail.com</a></p>
-      <p>Teléfono: +56 988 274 341</p>
-    </div>
-
-    <div class="footer-section">
-      <h3>♻️ Reciclajes Tudela</h3>
-      <p>© Todos los derechos reservados</p>
-      <p class="powered">Powered by <strong>JG Freelance</strong></p>
-    </div>
-  </div>
-</footer>
-</div>
-<script src="js/scripts.js" defer></script>
+  <script src="js/scripts.js" defer></script>
 </body>
 </html>
