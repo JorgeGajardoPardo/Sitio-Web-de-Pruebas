@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* Navbar aparece al subir */
+  /* Navbar*/
   let lastScrollTop = 0;
   const nav = document.querySelector(".navbar"); 
   window.addEventListener("scroll", function() {
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
   });
 
-  /* Carrusel ping-pong (galería) */
+  /* Carrusel*/
   const track = document.querySelector('.carousel-track');
   const items = document.querySelectorAll('.gallery-item');
   const prevBtn = document.querySelector('.carousel-btn.prev');
@@ -57,78 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let index = 0;
   let direction = 1;
-
-  function updateCarousel() {
-    track.style.transition = "transform 0.8s ease-in-out";
-    track.style.transform = `translateX(${-index * 100}%)`;
-  }
-
-  if (prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', () => {
-      if (index > 0) { index--; direction = -1; updateCarousel(); }
-    });
-    nextBtn.addEventListener('click', () => {
-      if (index < items.length - 1) { index++; direction = 1; updateCarousel(); }
-    });
-  }
-
-  let autoplay = setInterval(() => {
-    if (direction === 1) {
-      if (index < items.length - 1) index++; else { direction = -1; index--; }
-    } else {
-      if (index > 0) index--; else { direction = 1; index++; }
-    }
-    updateCarousel();
-  }, 3000);
-
-  const carousel = document.querySelector('.carousel');
-  if (carousel) {
-    carousel.addEventListener('mouseenter', () => clearInterval(autoplay));
-    carousel.addEventListener('mouseleave', () => {
-      autoplay = setInterval(() => {
-        if (direction === 1) {
-          if (index < items.length - 1) index++; else { direction = -1; index--; }
-        } else {
-          if (index > 0) index--; else { direction = 1; index++; }
-        }
-        updateCarousel();
-      }, 3000);
-    });
-  }
-
-  /* Lightbox */
-  const galleryImages = document.querySelectorAll('.gallery-item img');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const closeBtn = document.querySelector('#lightbox .close');
-  const prevLightbox = document.querySelector('#lightbox #prev');
-  const nextLightbox = document.querySelector('#lightbox #next');
-
-  let currentIndex = 0;
-
-  function showImage() {
-    lightboxImg.src = galleryImages[currentIndex].src;
-    lightbox.classList.remove('hidden');
-  }
-
-  galleryImages.forEach((img, i) => {
-    img.addEventListener('click', () => {
-      currentIndex = i;
-      showImage();
-    });
-  });
-
-  if (closeBtn) closeBtn.addEventListener('click', () => lightbox.classList.add('hidden'));
-  if (prevLightbox && nextLightbox) {
-    prevLightbox.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-      showImage();
-    });
-    nextLightbox.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % galleryImages.length;
-      showImage();
-    });
-  }
 
   /* Formulario de contacto */
   const contactToggle = document.querySelector(".contact-toggle");
@@ -164,7 +92,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* Animaciones fade-in al hacer scroll */
   const fadeElements = document.querySelectorAll(".fade-in");
   const sobreTitulo = document.querySelector("#sobre-nosotros h2");
   const sobreParrafos = document.querySelectorAll("#sobre-nosotros p");
@@ -189,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           el.classList.add("visible");
         }, delay);
-        delay += 200; // escalonado: cada elemento aparece con 200ms de diferencia
+        delay += 200; 
       }
     });
   }
