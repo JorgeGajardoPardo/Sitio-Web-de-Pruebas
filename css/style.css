@@ -268,27 +268,16 @@ section {
 }
 
 .card {
-  perspective: 1000px;
-  cursor: pointer;
+  cursor: default; /* ya no es interactiva */
 }
 
 .card-inner {
   position: relative;
   width: 100%;
   height: 350px;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.card.active .card-inner {
-  transform: rotateY(180deg);
 }
 
 .card-front, .card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%; 
-  backface-visibility: hidden;
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
@@ -317,7 +306,6 @@ section {
 .card-back {
   background: #2e7d32;
   color: #fff;
-  transform: rotateY(180deg);
   padding: 1rem;
   text-align: center;
   box-sizing: border-box;
@@ -333,60 +321,13 @@ section {
   line-height: 1.5;
 }
 
-.carousel {
-  position: relative;
-  overflow: hidden;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.carousel-track {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 100%;
-  transition: transform 0.8s ease-in-out;
-}
-
-.gallery-item {
-  border-radius: 0.75rem;
-  overflow: hidden;
-  box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.2);
-  cursor: pointer;
-}
-
-.gallery-item img {
-  width: 100%;
-  max-height:400px;
-  object-fit: cover;
-  transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.05);
-  filter: brightness(1.1) saturate(1.2);
-}
-
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  border: none;
-  font-size: 2rem;
-  color: #fff;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  transition: background 0.3s ease;
-  z-index: 5;
-}
-.carousel-btn:hover {
-  background: rgba(0,0,0,0.8);
-}
-.carousel-btn.prev { left: 0.5rem; }
-.carousel-btn.next { right: 0.5rem; }
 
 
+#mapa h2{
+    font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #2e7d32;
+}
 
 #mapa {
   padding: 3.75rem 1.25rem;
@@ -648,6 +589,10 @@ section {
 }
 .dark-mode #reciclamos h2 {
   color: #81c784;
+}
+.dark-mode #reciclamos .card-inner img{
+   background: #1e1e1e;
+ filter: brightness(0.6);  
 }
 
 .dark-mode .card-front {
